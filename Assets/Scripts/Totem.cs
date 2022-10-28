@@ -19,6 +19,7 @@ public class Totem : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        //can be optimized
         if (isFalling)
             transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
     }
@@ -65,7 +66,7 @@ public class Totem : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision);
+        
         if (!onBottom&&(collision.gameObject.name == "bottom" || collision.gameObject.tag=="Totem"))
         {
             isFalling = false;
@@ -86,6 +87,7 @@ public class Totem : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Spirit")
         {
+            Debug.Log(collision);
             Destroy(gameObject);
             Spawner.Instanse.SpawnTotem();
         }
