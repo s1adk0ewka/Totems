@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     private List<GameObject> Spirits;
 
     private Vector3 totemSpawnPoint;
+    private System.Random rnd = new ();
 
 
     private void Awake()
@@ -36,6 +37,7 @@ public class Spawner : MonoBehaviour
 
     public void SpawnTotem()
     {
-        Instantiate(Totems[1], totemSpawnPoint, Quaternion.identity);
+        
+        Instantiate(Totems[rnd.Next(0,Totems.Count-1)], totemSpawnPoint, Quaternion.identity);
     }
 }
