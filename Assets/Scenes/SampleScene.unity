@@ -118,6 +118,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
@@ -200,7 +202,91 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7685558554208264796
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 470892862586941344, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_Name
+      value: Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824656063347796925, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824656063347796925, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824656063347796925, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824656063347796925, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824656063347796925, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824656063347796925, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824656063347796925, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824656063347796925, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824656063347796925, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824656063347796925, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824656063347796925, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+--- !u!1 &7791337690071207420 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 470892862586941344, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+  m_PrefabInstance: {fileID: 7685558554208264796}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7791337690071207421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7791337690071207420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e78c19ea16162479a2fb1db5dfa2be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Totems:
+  - {fileID: 4231970983551692879, guid: 2894e0636c632cd4f86771b5bb18e83e, type: 3}
+  - {fileID: 7596430623487101068, guid: e769f4262e578d7488f90031ec176e6b, type: 3}
+  - {fileID: 5922805149982069376, guid: cded56efc8be2034ca4b3ab39a3cfad7, type: 3}
+  - {fileID: 1086920661385059466, guid: bc5b4cfa0da6f5c429998339d8e870e6, type: 3}
+  - {fileID: 2966828606456349065, guid: 8161e4ee9ea09f445aeea0319cafdaf8, type: 3}
+  Spirits: []
