@@ -11,6 +11,8 @@ public class Totem : MonoBehaviour
     private bool isFalling=false;
     [SerializeField]
     private bool onBottom=false;
+    [SerializeField]
+    private int height = 0;
     void Awake()
     {
         transform.localScale = Constants.totemSize;
@@ -68,6 +70,18 @@ public class Totem : MonoBehaviour
         {
             isFalling = false;
             onBottom = true;
+            if(collision.gameObject.tag == "Totem")
+            {
+                var totem = collision.gameObject.GetComponent<Totem>();
+                if (totem.height == Constants.MaxTotemHeightLimit)
+                    Destroy(gameObject);
+                else
+                    height = totem.height + 1;
+            }
+            else
+            {
+                height += 1;
+            }
             Spawner.Instanse.SpawnTotem();
         }
         else if (collision.gameObject.tag == "Spirit")
