@@ -8,9 +8,11 @@ public class Totem : MonoBehaviour
     [SerializeField]
     private float fallSpeed = 1f;
     [SerializeField]
-    private bool isFalling=false;
+    public bool isFalling { get; private set; } = false;
     [SerializeField]
-    private bool onBottom=false;
+    public bool onBottom { get; private set; } = false;
+    [SerializeField]
+    public bool onTop { get; private set; } = true;
     [SerializeField]
     private int height = 0;
     void Awake()
@@ -66,30 +68,61 @@ public class Totem : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        if (!onBottom&&(collision.gameObject.name == "bottom" || collision.gameObject.tag=="Totem"))
+        if(collision.gameObject.name == "bottom")
         {
             isFalling = false;
             onBottom = true;
-            if(collision.gameObject.tag == "Totem")
-            {
-                var totem = collision.gameObject.GetComponent<Totem>();
-                if (totem.height == Constants.MaxTotemHeightLimit)
-                    Destroy(gameObject);
-                else
-                    height = totem.height + 1;
-            }
+            Spawner.Instanse.SpawnTotem();
+            height = 1;
+        }
+        else if (collision.gameObject.tag == "Totem")
+        {
+            Debug.Log(collision.gameObject.name);
+            if (onBottom) return;
+            var totem = collision.gameObject.GetComponent<Totem>();
+            if (!totem.onBottom || totem.height == Constants.MaxTotemHeightLimit)
+                Destroy(gameObject);
             else
             {
-                height += 1;
+                isFalling = false;
+                onBottom = true;
+                height = totem.height + 1;
+                Spawner.Instanse.SpawnTotem();
             }
-            Spawner.Instanse.SpawnTotem();
+
         }
         else if (collision.gameObject.tag == "Spirit")
         {
-            Debug.Log(collision);
+            Debug.Log(collision.gameObject.name);
+            //Spawner.Instanse.SetCurrentTotemToNull();
             Destroy(gameObject);
-            Spawner.Instanse.SpawnTotem();
+            //Spawner.Instanse.SpawnTotem();
         }
+        //    if (!onBottom&&(collision.gameObject.name == "bottom" || collision.gameObject.tag=="Totem"))
+        //{
+        //    isFalling = false;
+        //    onBottom = true;
+
+        //    if(collision.gameObject.tag == "Totem")
+        //    {
+        //        var totem = collision.gameObject.GetComponent<Totem>();
+        //        if (totem.height == Constants.MaxTotemHeightLimit)
+        //            Destroy(gameObject);
+        //        else
+        //            height = totem.height + 1;
+        //    }
+        //    else
+        //    {
+        //        height += 1;
+        //    }
+
+        //    Spawner.Instanse.SpawnTotem();
+        //}
+        //else if (collision.gameObject.tag == "Spirit")
+        //{
+        //    Debug.Log(collision);
+        //    Destroy(gameObject);
+        //    Spawner.Instanse.SpawnTotem();
+        //}
     }
 }

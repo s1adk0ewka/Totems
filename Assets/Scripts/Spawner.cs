@@ -14,6 +14,9 @@ public class Spawner : MonoBehaviour
     private Vector3 totemSpawnPoint;
     private System.Random rnd = new ();
 
+    [SerializeField]
+    private GameObject currentTotem;
+
 
     private void Awake()
     {
@@ -33,11 +36,17 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(currentTotem is null||currentTotem.gameObject.IsUnityNull())
+            SpawnTotem();
     }
 
     public void SpawnTotem()
     {
-        
-        Instantiate(Totems[rnd.Next(0,Totems.Count-1)], totemSpawnPoint, Quaternion.identity);
+        currentTotem = Instantiate(Totems[rnd.Next(0, Totems.Count - 1)], totemSpawnPoint, Quaternion.identity);
+    }
+
+    public void SetCurrentTotemToNull()
+    {
+        currentTotem = null;
     }
 }
