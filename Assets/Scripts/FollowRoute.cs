@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FollowRoute : MonoBehaviour
 {
     [SerializeField]
+    private List<GameObject> combinedRoutes;
     private Transform[] routes;
     private int routeToGo { get; set; } = 0;
     private float tParam { get; set; } = 0f;
@@ -12,14 +14,13 @@ public class FollowRoute : MonoBehaviour
     private float speedModifier { get; set; } = 0.5f;
     private bool coroutineAllowed { get; set; } = true;
 
-    //void Start()
-    //{
-    //    routeToGo = 0;
-    //    tParam = 0f;
-    //    speedModifier = 0.5f;
-    //    coroutineAllowed = true;
-    //}
-    
+    void Start()
+    {
+        var rnd = new System.Random();
+        var randomRoute = Instantiate(combinedRoutes[rnd.Next(0,combinedRoutes.Count)], transform.position, Quaternion.identity); ;
+        routes = randomRoute.GetComponentsInChildren<Route>().Select(x=>x.gameObject.transform).ToArray();
+    }
+
     void Update()
     {
         if (coroutineAllowed)
