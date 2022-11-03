@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2807807551960540078}
   - component: {fileID: -877838651835185227}
   - component: {fileID: 3800874786507068063}
+  - component: {fileID: -2064682112374897951}
   m_Layer: 0
   m_Name: Totem
   m_TagString: Totem
@@ -126,9 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 8
-  isFalling: 0
-  onBottom: 0
   height: 0
+  type: 0
 --- !u!50 &3800874786507068063
 Rigidbody2D:
   serializedVersion: 4
@@ -150,3 +150,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-2064682112374897951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2807807551960540079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b687aae5e6116ec4c9fe4271ccd4bdba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballObj: {fileID: 1125600233987013863, guid: 3e9b6cb08d57f2f41a32e6ddb28b1f86, type: 3}

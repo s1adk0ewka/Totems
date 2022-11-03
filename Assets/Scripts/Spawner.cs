@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     private List<GameObject> Spirits;
     [SerializeField]
     private int totemSpawnLimit = 10;
+    [SerializeField]
     private int spiritSpawnLimit = 3;
     private Vector3 totemSpawnPoint;
     private Vector3 spiritSpawnPoint;
@@ -21,6 +22,7 @@ public class Spawner : MonoBehaviour
     private GameObject currentTotem;
     [SerializeField]
     private GameObject currentSpirit;
+
 
 
     private void Awake()
@@ -48,9 +50,11 @@ public class Spawner : MonoBehaviour
 
     public void SpawnTotem()
     {
-        if (totemSpawnLimit > 0)
+        if (totemSpawnLimit > 0 && Totems.Count>0)
         {
-            currentTotem = Instantiate(Totems[rnd.Next(0, Totems.Count)], totemSpawnPoint, Quaternion.identity);
+            var index = rnd.Next(0, Totems.Count);
+            currentTotem = Instantiate(Totems[index], totemSpawnPoint, Quaternion.identity);
+            Totems.RemoveAt(index);
             totemSpawnLimit--;
         }
     }
@@ -67,5 +71,10 @@ public class Spawner : MonoBehaviour
     public void SetCurrentTotemToNull()
     {
         currentTotem = null;
+    }
+
+    public GameObject GetCurrentSpirit()
+    {
+        return currentSpirit;
     }
 }

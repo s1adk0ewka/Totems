@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,22 @@ public class Totem : MonoBehaviour
     public bool onTop { get; private set; } = true;
     [SerializeField]
     private int height = 0;
-    void Awake()
+    [SerializeField]
+    private TotemType type;
+
+    private Action totemAction;
+
+    public enum TotemType
+    {
+        Fire,
+        Earth,
+        Electro,
+        Ice
+    }
+    void Start()
     {
         transform.localScale = Constants.totemSize;
+        totemAction = GetComponent<TotemActions>().dict[type];
     }
     private void FixedUpdate()
     {
@@ -72,12 +86,12 @@ public class Totem : MonoBehaviour
         {
             isFalling = false;
             onBottom = true;
+            totemAction();
             Spawner.Instanse.SpawnTotem();
             height = 1;
         }
         else if (collision.gameObject.tag == "Totem")
         {
-            Debug.Log(collision.gameObject.name);
             if (onBottom) return;
             var totem = collision.gameObject.GetComponent<Totem>();
             if (!totem.onBottom || totem.height == Constants.MaxTotemHeightLimit)
@@ -87,42 +101,15 @@ public class Totem : MonoBehaviour
                 isFalling = false;
                 onBottom = true;
                 height = totem.height + 1;
+                totemAction();
                 Spawner.Instanse.SpawnTotem();
             }
 
         }
         else if (collision.gameObject.tag == "Spirit")
         {
-            Debug.Log(collision.gameObject.name);
-            //Spawner.Instanse.SetCurrentTotemToNull();
             Destroy(gameObject);
-            //Spawner.Instanse.SpawnTotem();
+
         }
-        //    if (!onBottom&&(collision.gameObject.name == "bottom" || collision.gameObject.tag=="Totem"))
-        //{
-        //    isFalling = false;
-        //    onBottom = true;
-
-        //    if(collision.gameObject.tag == "Totem")
-        //    {
-        //        var totem = collision.gameObject.GetComponent<Totem>();
-        //        if (totem.height == Constants.MaxTotemHeightLimit)
-        //            Destroy(gameObject);
-        //        else
-        //            height = totem.height + 1;
-        //    }
-        //    else
-        //    {
-        //        height += 1;
-        //    }
-
-        //    Spawner.Instanse.SpawnTotem();
-        //}
-        //else if (collision.gameObject.tag == "Spirit")
-        //{
-        //    Debug.Log(collision);
-        //    Destroy(gameObject);
-        //    Spawner.Instanse.SpawnTotem();
-        //}
     }
 }

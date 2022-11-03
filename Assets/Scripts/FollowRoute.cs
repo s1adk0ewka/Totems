@@ -17,7 +17,7 @@ public class FollowRoute : MonoBehaviour
     void Start()
     {
         var rnd = new System.Random();
-        var randomRoute = Instantiate(combinedRoutes[rnd.Next(0,combinedRoutes.Count)], transform.position, Quaternion.identity); ;
+        var randomRoute = Instantiate(combinedRoutes[rnd.Next(0,combinedRoutes.Count)], transform.position, Quaternion.identity);
         routes = randomRoute.GetComponentsInChildren<Route>().Select(x=>x.gameObject.transform).ToArray();
     }
 

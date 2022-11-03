@@ -35,7 +35,7 @@ public class LevelBorders : MonoBehaviour
         var bottom = new GameObject("bottom", typeof(EdgeCollider2D));
         bottom.transform.parent = transform;
         bottom.GetComponent<EdgeCollider2D>().points = new[] { points[1], points[2] };
-        bottom.tag = "Bottom";
+        //bottom.tag = "Bottom";
     }
 
     // Update is called once per frame
