@@ -21,6 +21,7 @@ public class Totem : MonoBehaviour
 
     private Action totemAction;
 
+    public bool ProtectedByEarthTotem { get; set; } = false;
     public enum TotemType
     {
         Fire,
@@ -80,14 +81,30 @@ public class Totem : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Spirit")
+        {
+            if (ProtectedByEarthTotem)
+            {
+                Destroy(collision.gameObject);
+                ProtectedByEarthTotem = false;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.name == "bottom")
         {
             isFalling = false;
             onBottom = true;
-            totemAction();
             Spawner.Instanse.SpawnTotem();
+            totemAction();
             height = 1;
         }
         else if (collision.gameObject.tag == "Totem")
@@ -101,14 +118,9 @@ public class Totem : MonoBehaviour
                 isFalling = false;
                 onBottom = true;
                 height = totem.height + 1;
-                totemAction();
                 Spawner.Instanse.SpawnTotem();
+                totemAction();
             }
-
-        }
-        else if (collision.gameObject.tag == "Spirit")
-        {
-            Destroy(gameObject);
 
         }
     }

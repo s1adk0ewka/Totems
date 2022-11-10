@@ -25,6 +25,7 @@ public class TotemActions : MonoBehaviour
 
     public void FireAction()
     {
+
         if (!Spawner.Instanse.GetCurrentSpirit().gameObject.IsUnityNull())
         {
             Instantiate(fireballObj, transform.position + new Vector3(0, 0, -1), Quaternion.identity);
@@ -34,7 +35,7 @@ public class TotemActions : MonoBehaviour
 
     private void EarthAction()
     {
-
+        Spawner.Instanse.GetCurrentTotem().GetComponent<Totem>().ProtectedByEarthTotem = true;
     }
 
     private void ElectroAction()

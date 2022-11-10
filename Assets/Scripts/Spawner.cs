@@ -68,9 +68,9 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public void SetCurrentTotemToNull()
+    public GameObject GetCurrentTotem()
     {
-        currentTotem = null;
+        return currentTotem;
     }
 
     public GameObject GetCurrentSpirit()
