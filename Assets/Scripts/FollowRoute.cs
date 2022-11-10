@@ -11,8 +11,15 @@ public class FollowRoute : MonoBehaviour
     private int routeToGo { get; set; } = 0;
     private float tParam { get; set; } = 0f;
     private Vector2 objectPosition { get; set; }
+    [SerializeField]
     private float speedModifier { get; set; } = 0.5f;
     private bool coroutineAllowed { get; set; } = true;
+
+    public void SetSpeed(float speed)
+    {
+        speed = speed < 0 ? 0 : speed;
+        speedModifier= speed;
+    }
 
     void Start()
     {

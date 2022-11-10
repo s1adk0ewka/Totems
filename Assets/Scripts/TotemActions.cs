@@ -9,6 +9,12 @@ public class TotemActions : MonoBehaviour
 {
     [SerializeField]
     private GameObject fireballObj;
+    [SerializeField]
+    [Range(0f, 10f)]
+    private float IceTotemSlowTimeSeconds=5f;
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float IceTotemSlowCoefficient = 0.5f;
 
     public Dictionary<Totem.TotemType, Action> dict;
 
@@ -45,6 +51,17 @@ public class TotemActions : MonoBehaviour
 
     private void IceAction()
     {
+        if (!Spawner.Instanse.GetCurrentSpirit().gameObject.IsUnityNull())
+        {
+            StartCoroutine(SlowDownCoroutine(IceTotemSlowCoefficient, IceTotemSlowTimeSeconds));
+        }
+    }
 
+    private IEnumerator SlowDownCoroutine(float slowCoefficient, float time)
+    {
+        var followRouteComp = Spawner.Instanse.GetCurrentSpirit().GetComponent<FollowRoute>();
+        followRouteComp.SetSpeed(Constants.DefaultSpiritSpeedModifier*slowCoefficient);
+        yield return new WaitForSeconds(time);
+        followRouteComp.SetSpeed(Constants.DefaultSpiritSpeedModifier);
     }
 }
