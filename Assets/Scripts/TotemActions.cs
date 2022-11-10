@@ -51,7 +51,7 @@ public class TotemActions : MonoBehaviour
     {
         if (!Spawner.Instanse.GetCurrentSpirit().gameObject.IsUnityNull())
         {
-            StartCoroutine(SlowDownCoroutine(0f, IceTotemSlowTimeSeconds));
+            StartCoroutine(SlowDownCoroutine(0f, ElectroTotemStunTimeSeconds));
         }
     }
 

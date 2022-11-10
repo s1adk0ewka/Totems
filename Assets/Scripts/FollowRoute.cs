@@ -21,11 +21,19 @@ public class FollowRoute : MonoBehaviour
         speedModifier= speed;
     }
 
+    public IEnumerator WaitTrail(float time)
+    {
+        var trail = GetComponent<TrailRenderer>();
+        trail.enabled = false;
+        yield return new WaitForSeconds(time);
+        trail.enabled = true;
+    }
     void Start()
     {
         var rnd = new System.Random();
         var randomRoute = Instantiate(combinedRoutes[rnd.Next(0,combinedRoutes.Count)], transform.position, Quaternion.identity);
         routes = randomRoute.GetComponentsInChildren<Route>().Select(x=>x.gameObject.transform).ToArray();
+        StartCoroutine(WaitTrail(0.2f));
     }
 
     void Update()
