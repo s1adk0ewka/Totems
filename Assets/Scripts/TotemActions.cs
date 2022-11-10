@@ -49,6 +49,8 @@ public class TotemActions : MonoBehaviour
 
     private void ElectroAction()
     {
+        //if spirit just spawned, he might cleansse this effect
+        //TODO
         if (!Spawner.Instanse.GetCurrentSpirit().gameObject.IsUnityNull())
         {
             StartCoroutine(SlowDownCoroutine(0f, ElectroTotemStunTimeSeconds));
@@ -57,6 +59,8 @@ public class TotemActions : MonoBehaviour
 
     private void IceAction()
     {
+        //if spirit just spawned, he might cleansse this effect
+        //TODO
         if (!Spawner.Instanse.GetCurrentSpirit().gameObject.IsUnityNull())
         {
             StartCoroutine(SlowDownCoroutine(IceTotemSlowCoefficient, IceTotemSlowTimeSeconds));
