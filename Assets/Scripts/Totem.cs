@@ -85,6 +85,7 @@ public class Totem : MonoBehaviour
     {
         if (collision.gameObject.tag == "Spirit")
         {
+            if (!collision.gameObject.GetComponent<FollowRoute>().CanHurt) return;
             if (ProtectedByEarthTotem)
             {
                 Destroy(collision.gameObject);

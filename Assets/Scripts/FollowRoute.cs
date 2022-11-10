@@ -15,25 +15,52 @@ public class FollowRoute : MonoBehaviour
     private float speedModifier { get; set; } = 0.5f;
     private bool coroutineAllowed { get; set; } = true;
 
+    public bool CanHurt { get; private set; } = true;
+
     public void SetSpeed(float speed)
     {
         speed = speed < 0 ? 0 : speed;
         speedModifier= speed;
     }
 
-    public IEnumerator WaitTrail(float time)
+    private IEnumerator WaitToHurt(int times)
+    {
+        SetSpeed(0);
+        CanHurt = false;
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        var defaultColor = spriteRenderer.color;
+        var transparentColor = new Color(defaultColor.r, defaultColor.g, defaultColor.b, 0);
+
+        for(var i = 0; i < times*2; i++)
+        {
+            
+            spriteRenderer.color = transparentColor;
+            yield return new WaitForSeconds(0.25f);
+            spriteRenderer.color = defaultColor;
+            yield return new WaitForSeconds(0.25f);
+        }
+        //yield return new WaitForSeconds(time);
+        SetSpeed(Constants.DefaultSpiritSpeedModifier);
+        CanHurt = true;
+        //GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    private IEnumerator WaitTrail(float time)
     {
         var trail = GetComponent<TrailRenderer>();
         trail.enabled = false;
         yield return new WaitForSeconds(time);
         trail.enabled = true;
     }
+
     void Start()
     {
         var rnd = new System.Random();
         var randomRoute = Instantiate(combinedRoutes[rnd.Next(0,combinedRoutes.Count)], transform.position, Quaternion.identity);
         routes = randomRoute.GetComponentsInChildren<Route>().Select(x=>x.gameObject.transform).ToArray();
+        StartCoroutine(WaitToHurt(2));
         StartCoroutine(WaitTrail(0.2f));
+        
     }
 
     void Update()
