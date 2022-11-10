@@ -11,10 +11,13 @@ public class TotemActions : MonoBehaviour
     private GameObject fireballObj;
     [SerializeField]
     [Range(0f, 10f)]
-    private float IceTotemSlowTimeSeconds=5f;
+    private float IceTotemSlowTimeSeconds=10f;
     [SerializeField]
     [Range(0f, 1f)]
     private float IceTotemSlowCoefficient = 0.5f;
+    [SerializeField]
+    [Range(0f, 10f)]
+    private float ElectroTotemStunTimeSeconds = 5f;
 
     public Dictionary<Totem.TotemType, Action> dict;
 
@@ -46,7 +49,10 @@ public class TotemActions : MonoBehaviour
 
     private void ElectroAction()
     {
-
+        if (!Spawner.Instanse.GetCurrentSpirit().gameObject.IsUnityNull())
+        {
+            StartCoroutine(SlowDownCoroutine(0f, IceTotemSlowTimeSeconds));
+        }
     }
 
     private void IceAction()
