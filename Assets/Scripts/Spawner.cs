@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Linq;
 using static UnityEngine.GraphicsBuffer;
 
 public class Spawner : MonoBehaviour
@@ -12,9 +13,9 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private List<GameObject> Spirits;
     [SerializeField]
-    private int totemSpawnLimit = 10;
+    private int totemSpawnLimit;
     [SerializeField]
-    private int spiritSpawnLimit = 3;
+    private int spiritSpawnLimit = 5;
     private Vector3 totemSpawnPoint;
     private Vector3 spiritSpawnPoint;
     private System.Random rnd = new ();
@@ -32,9 +33,16 @@ public class Spawner : MonoBehaviour
             Instanse = this;
         else if (Instanse == this)
             Destroy(gameObject);
+        totemSpawnLimit=Totems.Count;
         totemSpawnPoint = Lanes.TopPoints[1];
         spiritSpawnPoint = Camera.main.transform.position;
-        SpawnTotem();
+        //SpawnTotem();
+        var totemsWithoutAir = Totems.Where(x => x.GetComponent<Totem>().GetTotemType() != Totem.TotemType.Air).ToList();
+        var index = rnd.Next(0, totemsWithoutAir.Count);
+        currentTotem = Instantiate(totemsWithoutAir[index], totemSpawnPoint, Quaternion.identity);
+        //Totems.RemoveAt(index);
+        Totems.Remove(totemsWithoutAir[index]);
+        totemSpawnLimit--;
     }
 
     // Start is called before the first frame update

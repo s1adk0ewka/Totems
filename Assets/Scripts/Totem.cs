@@ -20,6 +20,9 @@ public class Totem : MonoBehaviour
     [SerializeField]
     private TotemType type;
 
+    [SerializeField]
+    //public TotemType? neighborType { get; private set; } = null;
+
     private Action totemAction;
 
     public bool ProtectedByEarthTotem { get; set; } = false;
@@ -28,7 +31,8 @@ public class Totem : MonoBehaviour
         Fire,
         Earth,
         Electro,
-        Ice
+        Ice,
+        Air
     }
     void Start()
     {
@@ -133,11 +137,22 @@ public class Totem : MonoBehaviour
                 isFalling = false;
                 onBottom = true;
                 height = totem.height + 1;
+                if (type == TotemType.Air)
+                {
+                    type = totem.type;
+                    totemAction = GetComponent<TotemActions>().dict[type];
+                }
+                //neighborType= totem.type;
                 Spawner.Instanse.SpawnTotem();
                 StartCoroutine(Wait(0.2f));
                 //totemAction();
             }
 
         }
+    }
+
+    public TotemType GetTotemType()
+    {
+        return type;
     }
 }

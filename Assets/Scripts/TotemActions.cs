@@ -34,8 +34,13 @@ public class TotemActions : MonoBehaviour
             { Totem.TotemType.Fire, FireAction },
             { Totem.TotemType.Earth, EarthAction },
             { Totem.TotemType.Electro, ElectroAction },
-            { Totem.TotemType.Ice, IceAction }
+            { Totem.TotemType.Ice, IceAction },
+            { Totem.TotemType.Air, AirAction }
         };
+    }
+
+    private void AirAction()
+    {
     }
 
     public void FireAction()
@@ -77,6 +82,4 @@ public class TotemActions : MonoBehaviour
             Instantiate(IceObj, spirit.transform.position + new Vector3(0, 0, 1), Quaternion.identity);
         }
     }
-
-    
 }

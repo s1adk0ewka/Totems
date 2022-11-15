@@ -288,9 +288,11 @@ MonoBehaviour:
   - {fileID: 7596430623487101068, guid: e769f4262e578d7488f90031ec176e6b, type: 3}
   - {fileID: 1086920661385059466, guid: bc5b4cfa0da6f5c429998339d8e870e6, type: 3}
   - {fileID: 1086920661385059466, guid: bc5b4cfa0da6f5c429998339d8e870e6, type: 3}
+  - {fileID: 5294442333973787664, guid: 6e3a37e07b7838041bd6cb273ae99acb, type: 3}
+  - {fileID: 5294442333973787664, guid: 6e3a37e07b7838041bd6cb273ae99acb, type: 3}
   Spirits:
   - {fileID: 6409216918616264261, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}
   totemSpawnLimit: 10
-  spiritSpawnLimit: 3
+  spiritSpawnLimit: 6
   currentTotem: {fileID: 0}
   currentSpirit: {fileID: 0}
