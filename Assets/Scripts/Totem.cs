@@ -48,43 +48,65 @@ public class Totem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-
-    private void OnMouseDrag()
-    {
-        //if (isFalling)
-        //{
-        //    isDragging = true;
-        //    var mousePos = Camera.main.ScreenToWorldPoint(new Vector3(
-        //    Input.mousePosition.x,
-        //    Input.mousePosition.y,
-        //    10));
-        //    //transform.Translate(Camera.main.ScreenToWorldPoint(new Vector3(
-        //    //Input.mousePosition.x,
-        //    //Input.mousePosition.y,
-        //    //10)) * Time.deltaTime);
-        //    transform.position = Vector3.Lerp(transform.position, mousePos, fallSpeed * Time.deltaTime);
-        //}
-        if (!isFalling&&!onBottom)
+        //TODO
+        //Refactor this later
+        if (Input.GetMouseButton(0))
         {
-            var mousePos = Camera.main.ScreenToWorldPoint(new Vector3(
-            Input.mousePosition.x,
-            Input.mousePosition.y,
-            10));
-            transform.position = Vector3.Lerp(transform.position, new Vector3(mousePos.x, transform.position.y, 0), fallSpeed * Time.deltaTime);
+            //Debug.Log("Pressed left click.");
+            if (!isFalling && !onBottom)
+            {
+                var mousePos = Camera.main.ScreenToWorldPoint(new Vector3(
+                Input.mousePosition.x,
+                Input.mousePosition.y,
+                10));
+                transform.position = Vector3.Lerp(transform.position, new Vector3(mousePos.x, transform.position.y, 0), fallSpeed * Time.deltaTime);
+            }
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            Debug.Log("hren");
+            if (!isFalling && !onBottom)
+            {
+                transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, transform.position)).First();
+                isFalling = true;
+            }
         }
     }
 
-    private void OnMouseUp()
-    {
-        if (!isFalling&&!onBottom)
-        {
-            transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, transform.position)).First();
-            isFalling = true;
-        }
-    }
+
+    //private void OnMouseDrag()
+    //{
+    //    //if (isFalling)
+    //    //{
+    //    //    isDragging = true;
+    //    //    var mousePos = Camera.main.ScreenToWorldPoint(new Vector3(
+    //    //    Input.mousePosition.x,
+    //    //    Input.mousePosition.y,
+    //    //    10));
+    //    //    //transform.Translate(Camera.main.ScreenToWorldPoint(new Vector3(
+    //    //    //Input.mousePosition.x,
+    //    //    //Input.mousePosition.y,
+    //    //    //10)) * Time.deltaTime);
+    //    //    transform.position = Vector3.Lerp(transform.position, mousePos, fallSpeed * Time.deltaTime);
+    //    //}
+    //    if (!isFalling&&!onBottom)
+    //    {
+    //        var mousePos = Camera.main.ScreenToWorldPoint(new Vector3(
+    //        Input.mousePosition.x,
+    //        Input.mousePosition.y,
+    //        10));
+    //        transform.position = Vector3.Lerp(transform.position, new Vector3(mousePos.x, transform.position.y, 0), fallSpeed * Time.deltaTime);
+    //    }
+    //}
+
+    //private void OnMouseUp()
+    //{
+    //    if (!isFalling&&!onBottom)
+    //    {
+    //        transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, transform.position)).First();
+    //        isFalling = true;
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

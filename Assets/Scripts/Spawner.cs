@@ -53,7 +53,7 @@ public class Spawner : MonoBehaviour
     {
         if(currentTotem is null||currentTotem.gameObject.IsUnityNull())
             SpawnTotem();
-        if ((currentSpirit is null || currentSpirit.gameObject.IsUnityNull())&&(!currentTotem.GetComponent<Totem>().isFalling))
+        if ((currentSpirit is null || currentSpirit.gameObject.IsUnityNull())||!currentTotem.GetComponent<Totem>().isFalling)
             SpawnSpirit();
         //Debug.Log(currentSpirit);
     }
