@@ -48,6 +48,7 @@ public class Totem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If make this in FixedUpdate, there will be some strange bugs.
         //TODO
         //Refactor this later
         if (Input.GetMouseButton(0))
@@ -59,7 +60,8 @@ public class Totem : MonoBehaviour
                 Input.mousePosition.x,
                 Input.mousePosition.y,
                 10));
-                transform.position = Vector3.Lerp(transform.position, new Vector3(mousePos.x, transform.position.y, 0), fallSpeed * Time.deltaTime);
+                //transform.position = Vector3.Lerp(transform.position, new Vector3(mousePos.x, transform.position.y, 0), fallSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(mousePos.x, transform.position.y, 0), fallSpeed * Time.deltaTime);
             }
         }
         if (Input.GetMouseButtonUp(0))

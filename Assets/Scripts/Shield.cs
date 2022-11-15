@@ -15,6 +15,7 @@ public class Shield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //This is bad. Better way is through events
         if (!totem.GetComponent<Totem>().ProtectedByEarthTotem)
         {
             Destroy(gameObject);

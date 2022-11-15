@@ -19,6 +19,7 @@ public class Ice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //This is bad. Better way is through events
         if (target == null || target.IsUnityNull() || target.IsDestroyed())
         {
             Destroy(gameObject);
