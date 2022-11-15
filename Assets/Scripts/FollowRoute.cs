@@ -1,7 +1,27 @@
+using System;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
+public class StatusAttribute : Attribute
+{
+    public StatusAttribute(Status statusEffect)
+    {
+        StatusEffect = statusEffect;
+    }
+
+    public Status StatusEffect { get; }
+
+}
+
+public enum Status
+{
+    OK,
+    Stuned,
+    Slowed
+}
 
 public class FollowRoute : MonoBehaviour
 {
@@ -13,37 +33,74 @@ public class FollowRoute : MonoBehaviour
     private Vector2 objectPosition { get; set; }
     [SerializeField]
     private float speedModifier { get; set; } = 0.5f;
-    private bool coroutineAllowed { get; set; } = true;
+    private bool ActionCoroutineAllowed { get; set; } = true;
 
     public bool CanHurt { get; private set; } = true;
 
+    private IEnumerator currentStatusCoroutine;
+
+
+    public Status currentStatus { get; private set; }
     public void SetSpeed(float speed)
     {
         speed = speed < 0 ? 0 : speed;
         speedModifier= speed;
     }
 
-    private IEnumerator WaitToHurt(int times)
+    public void Stun(float time,Color color)
     {
-        SetSpeed(0);
-        CanHurt = false;
-        var spriteRenderer = GetComponent<SpriteRenderer>();
-        var defaultColor = spriteRenderer.color;
-        var transparentColor = new Color(defaultColor.r, defaultColor.g, defaultColor.b, 0);
-
-        for(var i = 0; i < times*2; i++)
-        {
-            
-            spriteRenderer.color = transparentColor;
-            yield return new WaitForSeconds(0.25f);
-            spriteRenderer.color = defaultColor;
-            yield return new WaitForSeconds(0.25f);
-        }
-        //yield return new WaitForSeconds(time);
-        SetSpeed(Constants.DefaultSpiritSpeedModifier);
-        CanHurt = true;
-        //GetComponent<SpriteRenderer>().color = Color.white;
+        //DRY, refactor later
+        if(currentStatusCoroutine!=null)
+            StopCoroutine(currentStatusCoroutine);
+        currentStatusCoroutine= StunCoroutine(time,color);
+        StartCoroutine(currentStatusCoroutine);
     }
+
+    public void Slow(float time, float slowCoefficient)
+    {
+        //DRY, refactor later
+        if (currentStatusCoroutine != null)
+            StopCoroutine(currentStatusCoroutine);
+        currentStatusCoroutine = SlowCoroutine(time,slowCoefficient);
+        StartCoroutine(currentStatusCoroutine);
+    }
+    public IEnumerator StunCoroutine(float time,Color stunColor = default(Color))
+    {
+        //to prevent CS1736
+        currentStatus = Status.Stuned;
+        if (stunColor == default(Color))
+        {
+            stunColor = Color.gray;
+        }
+        SetSpeed(0);
+        CanHurt= false;
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = stunColor;
+        yield return new WaitForSeconds(time);
+        currentStatus = Status.OK;
+        SetSpeed(Constants.DefaultSpiritSpeedModifier);
+        CanHurt= true;
+        spriteRenderer.color = Constants.DefaultSpiritColor;
+    }
+
+    public IEnumerator SlowCoroutine(float time,float slowCoef, Color slowColor = default(Color))
+    {
+        currentStatus = Status.Slowed;
+        CanHurt = true;
+        //to prevent CS1736
+        if (slowColor == default(Color))
+        {
+            slowColor = Color.blue;
+        }
+        SetSpeed(Constants.DefaultSpiritSpeedModifier*slowCoef);
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = slowColor;
+        yield return new WaitForSeconds(time);
+        currentStatus = Status.OK;
+        SetSpeed(Constants.DefaultSpiritSpeedModifier);
+        spriteRenderer.color = Constants.DefaultSpiritColor;
+    }
+
 
     private IEnumerator WaitTrail(float time)
     {
@@ -58,14 +115,14 @@ public class FollowRoute : MonoBehaviour
         var rnd = new System.Random();
         var randomRoute = Instantiate(combinedRoutes[rnd.Next(0,combinedRoutes.Count)], transform.position, Quaternion.identity);
         routes = randomRoute.GetComponentsInChildren<Route>().Select(x=>x.gameObject.transform).ToArray();
-        StartCoroutine(WaitToHurt(2));
+        Stun(2f,Color.gray);
         StartCoroutine(WaitTrail(0.2f));
         
     }
 
     void Update()
     {
-        if (coroutineAllowed)
+        if (ActionCoroutineAllowed)
         {
             StartCoroutine(GoByTheRoute(routeToGo));
         }
@@ -73,7 +130,7 @@ public class FollowRoute : MonoBehaviour
 
     private IEnumerator GoByTheRoute(int routeNum)
     {
-        coroutineAllowed = false;
+        ActionCoroutineAllowed = false;
         Vector2 p0 = routes[routeNum].GetChild(0).position;
         Vector2 p1 = routes[routeNum].GetChild(1).position;
         Vector2 p2 = routes[routeNum].GetChild(2).position;
@@ -92,6 +149,6 @@ public class FollowRoute : MonoBehaviour
         {
             routeToGo = 0;
         }
-        coroutineAllowed = true;
+        ActionCoroutineAllowed = true;
     }
 }

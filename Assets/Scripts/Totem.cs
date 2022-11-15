@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Totem : MonoBehaviour
@@ -98,6 +99,18 @@ public class Totem : MonoBehaviour
         }
     }
 
+    public IEnumerator Wait(float seconds)
+    {
+        //yield return new WaitForSeconds(seconds);
+        yield return new WaitUntil(() =>
+        {
+            var spirit = Spawner.Instanse.GetCurrentSpirit();
+            return spirit != null || !spirit.IsUnityNull() || !spirit.IsDestroyed();
+        });
+
+        totemAction();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.name == "bottom")
@@ -105,7 +118,8 @@ public class Totem : MonoBehaviour
             isFalling = false;
             onBottom = true;
             Spawner.Instanse.SpawnTotem();
-            totemAction();
+            StartCoroutine(Wait(0.2f));
+            //totemAction();
             height = 1;
         }
         else if (collision.gameObject.tag == "Totem")
@@ -120,7 +134,8 @@ public class Totem : MonoBehaviour
                 onBottom = true;
                 height = totem.height + 1;
                 Spawner.Instanse.SpawnTotem();
-                totemAction();
+                StartCoroutine(Wait(0.2f));
+                //totemAction();
             }
 
         }

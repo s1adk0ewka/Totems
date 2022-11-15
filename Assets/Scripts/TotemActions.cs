@@ -10,6 +10,12 @@ public class TotemActions : MonoBehaviour
     [SerializeField]
     private GameObject fireballObj;
     [SerializeField]
+    private GameObject ElectroObj;
+    [SerializeField]
+    private GameObject IceObj;
+    [SerializeField]
+    private GameObject EarthObj;
+    [SerializeField]
     [Range(0f, 10f)]
     private float IceTotemSlowTimeSeconds=10f;
     [SerializeField]
@@ -44,34 +50,33 @@ public class TotemActions : MonoBehaviour
 
     private void EarthAction()
     {
-        Spawner.Instanse.GetCurrentTotem().GetComponent<Totem>().ProtectedByEarthTotem = true;
+        var totem = Spawner.Instanse.GetCurrentTotem();
+        totem.GetComponent<Totem>().ProtectedByEarthTotem = true;
+        var shield = Instantiate(EarthObj, totem.transform.position + new Vector3(0, 0, -1), Quaternion.identity);
+        shield.transform.parent = totem.transform;
     }
 
     private void ElectroAction()
     {
-        //if spirit just spawned, he might cleansse this effect
-        //TODO
         if (!Spawner.Instanse.GetCurrentSpirit().gameObject.IsUnityNull())
         {
-            StartCoroutine(SlowDownCoroutine(0f, ElectroTotemStunTimeSeconds));
+            //StartCoroutine(SlowDownCoroutine(0f, ElectroTotemStunTimeSeconds));
+            var spirit = Spawner.Instanse.GetCurrentSpirit();
+            spirit.GetComponent<FollowRoute>().Stun(ElectroTotemStunTimeSeconds, new Color(175f / 255f, 0, 1, 1));
+            Instantiate(ElectroObj, spirit.transform.position + new Vector3(0, 0, 1), Quaternion.identity);
         }
     }
 
     private void IceAction()
     {
-        //if spirit just spawned, he might cleansse this effect
-        //TODO
         if (!Spawner.Instanse.GetCurrentSpirit().gameObject.IsUnityNull())
         {
-            StartCoroutine(SlowDownCoroutine(IceTotemSlowCoefficient, IceTotemSlowTimeSeconds));
+            //StartCoroutine(SlowDownCoroutine(IceTotemSlowCoefficient, IceTotemSlowTimeSeconds));
+            var spirit = Spawner.Instanse.GetCurrentSpirit();
+            Spawner.Instanse.GetCurrentSpirit().GetComponent<FollowRoute>().Slow(IceTotemSlowTimeSeconds, IceTotemSlowCoefficient);
+            Instantiate(IceObj, spirit.transform.position + new Vector3(0, 0, 1), Quaternion.identity);
         }
     }
 
-    private IEnumerator SlowDownCoroutine(float slowCoefficient, float time)
-    {
-        var followRouteComp = Spawner.Instanse.GetCurrentSpirit().GetComponent<FollowRoute>();
-        followRouteComp.SetSpeed(Constants.DefaultSpiritSpeedModifier*slowCoefficient);
-        yield return new WaitForSeconds(time);
-        followRouteComp.SetSpeed(Constants.DefaultSpiritSpeedModifier);
-    }
+    
 }

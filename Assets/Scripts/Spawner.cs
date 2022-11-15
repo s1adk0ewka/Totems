@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Spawner : MonoBehaviour
 {
@@ -44,8 +45,9 @@ public class Spawner : MonoBehaviour
     {
         if(currentTotem is null||currentTotem.gameObject.IsUnityNull())
             SpawnTotem();
-        if (currentSpirit is null || currentSpirit.gameObject.IsUnityNull())
+        if ((currentSpirit is null || currentSpirit.gameObject.IsUnityNull())&&(!currentTotem.GetComponent<Totem>().isFalling))
             SpawnSpirit();
+        //Debug.Log(currentSpirit);
     }
 
     public void SpawnTotem()
@@ -61,7 +63,8 @@ public class Spawner : MonoBehaviour
 
     public void SpawnSpirit()
     {
-        if (spiritSpawnLimit > 0)
+        if (spiritSpawnLimit > 0
+            && (currentSpirit == null || currentSpirit.IsUnityNull() || currentSpirit.IsDestroyed()))
         {
             currentSpirit = Instantiate(Spirits[rnd.Next(0, Spirits.Count)], spiritSpawnPoint, Quaternion.identity);
             spiritSpawnLimit--;
