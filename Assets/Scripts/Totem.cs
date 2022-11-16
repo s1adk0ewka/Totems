@@ -66,7 +66,6 @@ public class Totem : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            Debug.Log("hren");
             if (!isFalling && !onBottom)
             {
                 transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, transform.position)).First();

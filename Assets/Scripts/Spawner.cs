@@ -12,10 +12,9 @@ public class Spawner : MonoBehaviour
     private List<GameObject> Totems;
     [SerializeField]
     private List<GameObject> Spirits;
-    [SerializeField]
     private int totemSpawnLimit;
     [SerializeField]
-    private int spiritSpawnLimit = 5;
+    private int spiritSpawnLimit;
     private Vector3 totemSpawnPoint;
     private Vector3 spiritSpawnPoint;
     private System.Random rnd = new ();
@@ -33,10 +32,11 @@ public class Spawner : MonoBehaviour
             Instanse = this;
         else if (Instanse == this)
             Destroy(gameObject);
-        totemSpawnLimit=Totems.Count;
-        totemSpawnPoint = Lanes.TopPoints[1];
+        totemSpawnLimit =Totems.Count;
+        totemSpawnPoint = Lanes.TopPoints[1]-new Vector3(0,0.5f,0);
         spiritSpawnPoint = Camera.main.transform.position;
         //SpawnTotem();
+        
         var totemsWithoutAir = Totems.Where(x => x.GetComponent<Totem>().GetTotemType() != Totem.TotemType.Air).ToList();
         var index = rnd.Next(0, totemsWithoutAir.Count);
         currentTotem = Instantiate(totemsWithoutAir[index], totemSpawnPoint, Quaternion.identity);
@@ -46,7 +46,22 @@ public class Spawner : MonoBehaviour
     }
 
     // Start is called before the first frame update
-
+    private void Start()
+    {
+        var defTotemLimit= Totems.Count+1;
+        var defSpiritLimit = spiritSpawnLimit;
+        DisplayText.Instanse.OnSpiritsCountChanged.AddListener(amount =>
+        {
+            DisplayText.Instanse.SpiritsCount.text = $"Фаза {defSpiritLimit-amount}/{defSpiritLimit}";
+        }
+        );
+        DisplayText.Instanse.OnTotemsCountChanged.AddListener(amount =>
+        {
+            DisplayText.Instanse.TotemsCount.text = $"Тотемы: {amount}/{defTotemLimit}";
+        }
+        );
+        DisplayText.Instanse.ChangeTotemsCount(totemSpawnLimit);
+    }
 
     // Update is called once per frame
     void Update()
@@ -66,6 +81,7 @@ public class Spawner : MonoBehaviour
             currentTotem = Instantiate(Totems[index], totemSpawnPoint, Quaternion.identity);
             Totems.RemoveAt(index);
             totemSpawnLimit--;
+            DisplayText.Instanse.ChangeTotemsCount(totemSpawnLimit);
         }
     }
 
@@ -76,6 +92,7 @@ public class Spawner : MonoBehaviour
         {
             currentSpirit = Instantiate(Spirits[rnd.Next(0, Spirits.Count)], spiritSpawnPoint, Quaternion.identity);
             spiritSpawnLimit--;
+            DisplayText.Instanse.ChangeSpiritsCount(spiritSpawnLimit);
         }
     }
 
