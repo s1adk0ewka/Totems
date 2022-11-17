@@ -727,7 +727,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C 1\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -889,7 +889,6 @@ MonoBehaviour:
   - {fileID: 5294442333973787664, guid: 6e3a37e07b7838041bd6cb273ae99acb, type: 3}
   Spirits:
   - {fileID: 6409216918616264261, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}
-  totemSpawnLimit: 10
   spiritSpawnLimit: 6
   currentTotem: {fileID: 0}
   currentSpirit: {fileID: 0}
