@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,18 +11,22 @@ public class Fireball : MonoBehaviour
     private GameObject target;
     void Start()
     {
-        target = Spawner.Instanse.GetCurrentSpirit();
+        target = Spawner.Instanse.GetCurrentSpirits().FirstOrDefault(spirit => spirit.GetComponent<Spirit>().GetElementalType() != ElementalType.Fire);
     }
 
     // Update is called once per frame
     void Update()
     {
         //transform.Translate(target.transform.position * speed * Time.deltaTime);
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed*Time.deltaTime);
-        if (transform.position == target.transform.position)
+        if (target == null) Destroy(gameObject);
+        else
         {
-            Destroy(target);
-            Destroy(gameObject);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+            if (transform.position == target.transform.position)
+            {
+                Destroy(target);
+                Destroy(gameObject);
+            }
         }
     }
 

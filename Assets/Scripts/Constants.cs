@@ -8,5 +8,5 @@ public static class Constants
     public static readonly int MaxTotemHeightLimit = 4;
     public static readonly float DefaultSpiritSpeedModifier = 0.5f;
     //rework later
-    public static readonly Color DefaultSpiritColor= Color.white;
+    //public static readonly Color DefaultSpiritColor= Color.white;
 }

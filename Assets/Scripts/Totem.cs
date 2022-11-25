@@ -5,7 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Totem : MonoBehaviour
+public partial class Totem : MonoBehaviour
 {
     [SerializeField]
     private float fallSpeed = 1f;
@@ -18,7 +18,9 @@ public class Totem : MonoBehaviour
     [SerializeField]
     private int height = 0;
     [SerializeField]
-    private TotemType type;
+    private ElementalType type;
+
+    public bool isLast=false;
 
     [SerializeField]
     //public TotemType? neighborType { get; private set; } = null;
@@ -26,14 +28,6 @@ public class Totem : MonoBehaviour
     private Action totemAction;
 
     public bool ProtectedByEarthTotem { get; set; } = false;
-    public enum TotemType
-    {
-        Fire,
-        Earth,
-        Electro,
-        Ice,
-        Air
-    }
     void Start()
     {
         transform.localScale = Constants.totemSize;
@@ -70,6 +64,7 @@ public class Totem : MonoBehaviour
             {
                 transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, transform.position)).First();
                 isFalling = true;
+                onTop= false;
             }
         }
     }
@@ -113,7 +108,7 @@ public class Totem : MonoBehaviour
     {
         if (collision.gameObject.tag == "Spirit")
         {
-            if (!collision.gameObject.GetComponent<FollowRoute>().CanHurt) return;
+            if (!collision.gameObject.GetComponent<Spirit>().CanHurt) return;
             if (ProtectedByEarthTotem)
             {
                 Destroy(collision.gameObject);
@@ -121,21 +116,33 @@ public class Totem : MonoBehaviour
             }
             else
             {
+                
                 Destroy(gameObject);
             }
         }
     }
 
-    public IEnumerator Wait(float seconds)
+    public IEnumerator WaitForSpiritsSpawn()
     {
         //yield return new WaitForSeconds(seconds);
         yield return new WaitUntil(() =>
         {
-            var spirit = Spawner.Instanse.GetCurrentSpirit();
-            return spirit != null || !spirit.IsUnityNull() || !spirit.IsDestroyed();
+            //var spirit = Spawner.Instanse.GetCurrentSpirits();
+            //return spirit != null || !spirit.IsUnityNull() || !spirit.IsDestroyed();
+            return Spawner.Instanse.GetCurrentSpirits().Count>0;
         });
 
         totemAction();
+        if (isLast)
+        {
+            yield return new WaitForSecondsRealtime(1f);
+            DisplayText.Instanse.ShowResetButton();
+        }
+    }
+
+    public void OnDestroy()
+    {
+        if (isLast) DisplayText.Instanse.ShowResetButton();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -145,7 +152,8 @@ public class Totem : MonoBehaviour
             isFalling = false;
             onBottom = true;
             Spawner.Instanse.SpawnTotem();
-            StartCoroutine(Wait(0.2f));
+            GetComponent<Rigidbody2D>().gravityScale = 1;
+            StartCoroutine(WaitForSpiritsSpawn());
             //totemAction();
             height = 1;
         }
@@ -160,21 +168,22 @@ public class Totem : MonoBehaviour
                 isFalling = false;
                 onBottom = true;
                 height = totem.height + 1;
-                if (type == TotemType.Air)
+                if (type == ElementalType.Air)
                 {
                     type = totem.type;
                     totemAction = GetComponent<TotemActions>().dict[type];
                 }
                 //neighborType= totem.type;
                 Spawner.Instanse.SpawnTotem();
-                StartCoroutine(Wait(0.2f));
+                GetComponent<Rigidbody2D>().gravityScale = 1;
+                StartCoroutine(WaitForSpiritsSpawn());
                 //totemAction();
             }
 
         }
     }
 
-    public TotemType GetTotemType()
+    public ElementalType GetTotemType()
     {
         return type;
     }

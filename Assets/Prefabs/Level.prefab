@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &470892862586941344
+--- !u!1 &5662975162002515458
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2824656063347796925}
-  - component: {fileID: 5211914294263388638}
-  - component: {fileID: 7685558556242651132}
+  - component: {fileID: 8011110778398073375}
+  - component: {fileID: 20951299086241916}
+  - component: {fileID: 2501338095468244574}
+  - component: {fileID: 5662975162002515459}
   m_Layer: 0
   m_Name: Level
   m_TagString: Border
@@ -18,42 +19,78 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2824656063347796925
+--- !u!4 &8011110778398073375
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470892862586941344}
+  m_GameObject: {fileID: 5662975162002515458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5211914294263388638
+--- !u!114 &20951299086241916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470892862586941344}
+  m_GameObject: {fileID: 5662975162002515458}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5c136a0d07276445be351f26e85a16d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7685558556242651132
+--- !u!114 &2501338095468244574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470892862586941344}
+  m_GameObject: {fileID: 5662975162002515458}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4141241ea7e6a7740ade93b897dde966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5662975162002515459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5662975162002515458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e78c19ea16162479a2fb1db5dfa2be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Totems:
+  - {fileID: 5922805149982069376, guid: cded56efc8be2034ca4b3ab39a3cfad7, type: 3}
+  - {fileID: 5922805149982069376, guid: cded56efc8be2034ca4b3ab39a3cfad7, type: 3}
+  - {fileID: 5922805149982069376, guid: cded56efc8be2034ca4b3ab39a3cfad7, type: 3}
+  - {fileID: 5922805149982069376, guid: cded56efc8be2034ca4b3ab39a3cfad7, type: 3}
+  - {fileID: 4231970983551692879, guid: 2894e0636c632cd4f86771b5bb18e83e, type: 3}
+  - {fileID: 4231970983551692879, guid: 2894e0636c632cd4f86771b5bb18e83e, type: 3}
+  - {fileID: 7596430623487101068, guid: e769f4262e578d7488f90031ec176e6b, type: 3}
+  - {fileID: 7596430623487101068, guid: e769f4262e578d7488f90031ec176e6b, type: 3}
+  - {fileID: 1086920661385059466, guid: bc5b4cfa0da6f5c429998339d8e870e6, type: 3}
+  - {fileID: 1086920661385059466, guid: bc5b4cfa0da6f5c429998339d8e870e6, type: 3}
+  - {fileID: 5294442333973787664, guid: 6e3a37e07b7838041bd6cb273ae99acb, type: 3}
+  - {fileID: 5294442333973787664, guid: 6e3a37e07b7838041bd6cb273ae99acb, type: 3}
+  Phases:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  SpiritsGameObjects: []
+  currentPhaseNumber: 0
+  FireSpirit: {fileID: 349324700807180295, guid: 9707c3d1f21fd0044ada09c011f601dc, type: 3}
+  IceSpirit: {fileID: 8585887776599518223, guid: bcba01ca01c5b9041b8c64274cd99875, type: 3}
+  ElectroSpirit: {fileID: 2101075279462316640, guid: 058222accdc94ff47879d18be389e2f4, type: 3}
+  EarthSpirit: {fileID: 7419225437671739915, guid: b77b9a6020daf9845976c87db04a8a48, type: 3}
+  AirSpirit: {fileID: 1649558953777087653, guid: 0995e304ab839794891482ff06e503e7, type: 3}
