@@ -33,8 +33,6 @@ public class Spirit : MonoBehaviour
     public bool CanHurt { get; private set; } = true;
 
     private IEnumerator currentStatusCoroutine;
-    //private Func<int, IEnumerator> followMode;
-
 
 
     public Status currentStatus { get; private set; }
