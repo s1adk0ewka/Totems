@@ -5,7 +5,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -877838651835185227, guid: 0d194c486e52848419d67c31e0d1391a, type: 3}
@@ -57,21 +56,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2807807551960540077, guid: 0d194c486e52848419d67c31e0d1391a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eee38aa217c635646ad7d53a39d06af8, type: 3}
+    - target: {fileID: 2807807551960540077, guid: 0d194c486e52848419d67c31e0d1391a, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2807807551960540077, guid: 0d194c486e52848419d67c31e0d1391a, type: 3}
       propertyPath: m_Color.g
-      value: 0.70087385
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2807807551960540077, guid: 0d194c486e52848419d67c31e0d1391a, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2807807551960540078, guid: 0d194c486e52848419d67c31e0d1391a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2807807551960540078, guid: 0d194c486e52848419d67c31e0d1391a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 2807807551960540079, guid: 0d194c486e52848419d67c31e0d1391a, type: 3}
       propertyPath: m_Name
       value: EarthTotem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d194c486e52848419d67c31e0d1391a, type: 3}

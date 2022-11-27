@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cac99e9e179d83f479fa144ac91a6b1c, type: 3}
-  m_Name: Phase
+  m_Name: Phase 1
   m_EditorClassIdentifier: 
-  <SpiritsInPhase>k__BackingField: 01000000
+  <SpiritsInPhase>k__BackingField: 0400000002000000
   <Routes>k__BackingField:
-  - {fileID: 306655308809038364, guid: 0ceb864a3fd86ff43adc4a579af84408, type: 3}
+  - {fileID: 4666604890563677196, guid: 27a57227efc768547a9057d93d694e82, type: 3}
+  - {fileID: 1481192126691563882, guid: b0099fb5d03ac54409e9933bf1dee4a4, type: 3}

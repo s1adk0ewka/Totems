@@ -212,9 +212,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1726800168120451233, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 46.01
+      objectReference: {fileID: 0}
     - target: {fileID: 5662975162002515458, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
       propertyPath: m_Name
       value: Level
@@ -240,6 +243,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2101075279462316640, guid: 058222accdc94ff47879d18be389e2f4, type: 3}
     - target: {fileID: 5662975162002515459, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: Totems.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662975162002515459, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
       propertyPath: Phases.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: c54115b0d2943bf48b2bcfb56f78d33e, type: 2}
@@ -251,6 +258,22 @@ PrefabInstance:
       propertyPath: Phases.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: b5440d55ff696ed4596b269df3da8f69, type: 2}
+    - target: {fileID: 5662975162002515459, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: Totems.Array.data[2]
+      value: 
+      objectReference: {fileID: 1086920661385059466, guid: bc5b4cfa0da6f5c429998339d8e870e6, type: 3}
+    - target: {fileID: 5662975162002515459, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: Totems.Array.data[3]
+      value: 
+      objectReference: {fileID: 4231970983551692879, guid: 2894e0636c632cd4f86771b5bb18e83e, type: 3}
+    - target: {fileID: 5662975162002515459, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: Totems.Array.data[5]
+      value: 
+      objectReference: {fileID: 7596430623487101068, guid: e769f4262e578d7488f90031ec176e6b, type: 3}
+    - target: {fileID: 5662975162002515459, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: Totems.Array.data[6]
+      value: 
+      objectReference: {fileID: 5294442333973787664, guid: 6e3a37e07b7838041bd6cb273ae99acb, type: 3}
     - target: {fileID: 8011110778398073375, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -296,14 +319,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
 --- !u!1001 &3848156741905066597
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6016673818367276975, guid: a82b26b632798534095a4a13fa6a9086, type: 3}
@@ -355,5 +376,4 @@ PrefabInstance:
       value: UI GameObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a82b26b632798534095a4a13fa6a9086, type: 3}

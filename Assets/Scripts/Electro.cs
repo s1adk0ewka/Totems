@@ -57,7 +57,7 @@ public class Electro : MonoBehaviour
 
 
             }
-            transform.position = target.transform.position + new Vector3(0, 0, 1);
+            transform.position = target.transform.position + new Vector3(0, 0, -10);
         }
             
     }
@@ -67,7 +67,7 @@ public class Electro : MonoBehaviour
         foreach (var spirit in Spawner.Instanse.GetCurrentSpirits())
         {
             spirit.GetComponent<Spirit>().Stun(ElectroTotemStunTimeSeconds, new Color(175f / 255f, 0, 1, 1));
-            var electro =  Instantiate(gameObject, spirit.gameObject.transform.position+ new Vector3(0,0,1),Quaternion.identity);
+            var electro =  Instantiate(gameObject, spirit.gameObject.transform.position+ new Vector3(0,0,-10),Quaternion.identity);
             electro.GetComponent<Electro>().isActionAllowed= false;
         }
     }

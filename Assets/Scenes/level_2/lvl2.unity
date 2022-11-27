@@ -212,7 +212,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3848156742925537511, guid: a82b26b632798534095a4a13fa6a9086, type: 3}
@@ -272,23 +271,37 @@ PrefabInstance:
       value: UI GameObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a82b26b632798534095a4a13fa6a9086, type: 3}
 --- !u!1001 &964981596
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1726800168120451233, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.74962175
+      objectReference: {fileID: 0}
+    - target: {fileID: 1726800168120451233, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7490206
+      objectReference: {fileID: 0}
+    - target: {fileID: 1726800168120451233, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0013
+      objectReference: {fileID: 0}
+    - target: {fileID: 1726800168120451233, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0033
+      objectReference: {fileID: 0}
     - target: {fileID: 5662975162002515458, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
       propertyPath: m_Name
       value: Level
       objectReference: {fileID: 0}
     - target: {fileID: 5662975162002515459, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
       propertyPath: Totems.Array.size
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5662975162002515459, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
       propertyPath: Phases.Array.data[0]
@@ -370,6 +383,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8575602968127974040, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5471698
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575602968127974040, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5471698
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575602968127974040, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5471698
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b62973cd1fe0f84182892f2f8e05c7e, type: 3}

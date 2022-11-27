@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac99e9e179d83f479fa144ac91a6b1c, type: 3}
   m_Name: Phase
   m_EditorClassIdentifier: 
-  <SpiritsInPhase>k__BackingField: 01000000
+  <SpiritsInPhase>k__BackingField: 0300000001000000
   <Routes>k__BackingField:
-  - {fileID: 306655308809038364, guid: 0ceb864a3fd86ff43adc4a579af84408, type: 3}
+  - {fileID: 6391824819173752516, guid: 8e8fdd446e0fc194f91657f4b94abc3a, type: 3}
+  - {fileID: 9051217229027478755, guid: 7484dfa3588507b44a40be675f242de4, type: 3}

@@ -61,7 +61,7 @@ public class Ice : MonoBehaviour
                     Debug.Log($"Unknown target elemental type {target.GetComponent<Spirit>().GetElementalType()}");
                     break;
             }
-            transform.position = target.transform.position + new Vector3(0, 0, 1);
+            transform.position = target.transform.position + new Vector3(0, 0, -10);
         }
     }
 
@@ -70,7 +70,7 @@ public class Ice : MonoBehaviour
         foreach (var spirit in Spawner.Instanse.GetCurrentSpirits())
         {
             spirit.GetComponent<Spirit>().Slow(IceTotemSlowTimeSeconds, IceTotemSlowCoefficient);
-            var ice = Instantiate(gameObject, spirit.gameObject.transform.position + new Vector3(0, 0, 1), Quaternion.identity);
+            var ice = Instantiate(gameObject, spirit.gameObject.transform.position + new Vector3(0, 0, -10), Quaternion.identity);
             ice.GetComponent<Ice>().isActionAllowed = false;
         }
     }
