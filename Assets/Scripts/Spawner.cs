@@ -102,15 +102,18 @@ public class Spawner : MonoBehaviour
         //Debug.Log($"Current phase - {currentPhaseNumber}\nSpirits count{SpiritsGameObjects.Count}");
         if(currentTotem is null||currentTotem.gameObject.IsUnityNull())
             SpawnTotem();
+
         if (currentPhaseNumber < Phases.Count() &&
-            SpiritsGameObjects.Count == 0 &&
-            currentTotem.GetComponent<Totem>().onTop)
+            SpiritsGameObjects.Count == 0
+             && (currentTotem.GetComponent<Totem>().onTop ||
+                    (currentTotem.GetComponent<Totem>().isLast && currentTotem.GetComponent<Totem>().onBottom)))
         {
             SpawnPhase();
         }
         if (currentPhaseNumber == Phases.Count() && SpiritsGameObjects.Count == 0)
         {
-            DisplayText.Instanse.ShowNextLevelAndResetButtons();
+            GameInfo.Instanse.ShowGameWon();
+            Totem.AnyActionAllowed = false;
         }
         //if ((currentSpirit is null || currentSpirit.gameObject.IsUnityNull())||!currentTotem.GetComponent<Totem>().isFalling)
         //    SpawnSpirit();

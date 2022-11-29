@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DisplayText : MonoBehaviour
@@ -10,12 +11,9 @@ public class DisplayText : MonoBehaviour
     public static DisplayText Instanse { get; private set; } = null;
     public TextMeshProUGUI TotemsCount;
     public TextMeshProUGUI SpiritsCount;
+    public TextMeshProUGUI LevelId;
     public UnityEvent<int> OnSpiritsCountChanged= new UnityEvent<int>();
     public UnityEvent<int> OnTotemsCountChanged = new UnityEvent<int>();
-    [SerializeField]
-    private GameObject ResetButton;
-    [SerializeField]
-    private GameObject NextLevelButton;
 
     private void Awake()
     {
@@ -23,6 +21,7 @@ public class DisplayText : MonoBehaviour
             Instanse = this;
         else if (Instanse == this)
             Destroy(gameObject);
+        LevelId.text = $"Уровень {SceneManager.GetActiveScene().buildIndex}";
     }
     public void ChangePhaseCount(int amount)
     {
@@ -34,14 +33,4 @@ public class DisplayText : MonoBehaviour
         OnTotemsCountChanged.Invoke(amount);
     }
 
-    public void ShowResetButton()
-    {
-        ResetButton.SetActive(true);
-    }
-
-    public void ShowNextLevelAndResetButtons()
-    {
-        ShowResetButton();
-        NextLevelButton.SetActive(true);
-    }
 }

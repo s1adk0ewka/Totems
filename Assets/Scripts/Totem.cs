@@ -7,6 +7,7 @@ using UnityEngine;
 
 public partial class Totem : MonoBehaviour
 {
+    public static bool AnyActionAllowed = true;
     [SerializeField]
     private float fallSpeed = 1f;
     [SerializeField]
@@ -27,6 +28,7 @@ public partial class Totem : MonoBehaviour
 
     private Action totemAction;
 
+
     public bool ProtectedByEarthTotem { get; set; } = false;
     void Start()
     {
@@ -45,6 +47,9 @@ public partial class Totem : MonoBehaviour
         //If make this in FixedUpdate, there will be some strange bugs.
         //TODO
         //Refactor this later
+        //Debug.Log(AnyActionAllowed);
+        if (!AnyActionAllowed)
+            return;
         if (Input.GetMouseButton(0))
         {
             //Debug.Log("Pressed left click.");
@@ -55,7 +60,8 @@ public partial class Totem : MonoBehaviour
                 Input.mousePosition.y,
                 10));
                 //transform.position = Vector3.Lerp(transform.position, new Vector3(mousePos.x, transform.position.y, 0), fallSpeed * Time.deltaTime);
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(mousePos.x, transform.position.y, 0), fallSpeed * Time.deltaTime);
+                //transform.position = Vector3.MoveTowards(transform.position, new Vector3(mousePos.x, transform.position.y, 0), fallSpeed * Time.deltaTime);
+                transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, mousePos)).First();
             }
         }
         if (Input.GetMouseButtonUp(0))
@@ -67,6 +73,10 @@ public partial class Totem : MonoBehaviour
                 onTop= false;
             }
         }
+    }
+    private void OnEnable()
+    {
+        AnyActionAllowed= true;
     }
 
 
@@ -136,13 +146,13 @@ public partial class Totem : MonoBehaviour
         if (isLast)
         {
             yield return new WaitForSecondsRealtime(1f);
-            DisplayText.Instanse.ShowResetButton();
+            GameInfo.Instanse.ShowGameLost();
         }
     }
 
     public void OnDestroy()
     {
-        if (isLast) DisplayText.Instanse.ShowResetButton();
+        if (isLast) GameInfo.Instanse.ShowGameLost();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

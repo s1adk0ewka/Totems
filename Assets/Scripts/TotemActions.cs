@@ -11,6 +11,10 @@ public class TotemActions : MonoBehaviour
     [SerializeField]
     private GameObject fireballObj;
     [SerializeField]
+    private GameObject snowballObj;
+    [SerializeField]
+    private GameObject electroballObj;
+    [SerializeField]
     private GameObject ElectroObj;
     [SerializeField]
     private GameObject IceObj;

@@ -16,7 +16,7 @@ public class Lanes : MonoBehaviour
         var width = Camera.main.pixelWidth;
         var height = Camera.main.pixelHeight;
         var firstLaneCenter= getVector3(width/6,0);
-        var topY = getVector3(0, height).y - 2*Constants.totemSize.y / 2;
+        var topY = getVector3(0, height).y - 3*Constants.totemSize.y / 2;
         var botY = getVector3(0, 0).y + Constants.totemSize.y / 2;
         var secondLaneCenter = getVector3(width/2, 0);
         var third = getVector3(width*5/ 6, 0);

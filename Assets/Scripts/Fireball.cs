@@ -11,7 +11,8 @@ public class Fireball : MonoBehaviour
     private GameObject target;
     void Start()
     {
-        target = Spawner.Instanse.GetCurrentSpirits().FirstOrDefault(spirit => spirit.GetComponent<Spirit>().GetElementalType() != ElementalType.Fire);
+        target = Spawner.Instanse.GetCurrentSpirits()
+            .FirstOrDefault(spirit => spirit.GetComponent<Spirit>().GetElementalType() != ElementalType.Fire);
     }
 
     // Update is called once per frame

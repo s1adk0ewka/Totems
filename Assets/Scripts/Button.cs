@@ -14,9 +14,11 @@ public class Button : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        if (lvlName != null)
-            SceneManager.LoadScene(lvlName);
+        if (SceneManager.GetActiveScene().buildIndex < 4)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
         else
-            Debug.Log($"Unknown level name {lvlName}");
+            SceneManager.LoadScene(0);
     }
 }
