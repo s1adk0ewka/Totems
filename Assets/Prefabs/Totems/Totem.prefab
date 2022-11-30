@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 8
-  height: 0
+  height: 1
   type: 0
   isLast: 0
 --- !u!50 &3800874786507068063

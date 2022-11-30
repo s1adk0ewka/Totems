@@ -18,7 +18,7 @@ public partial class Totem : MonoBehaviour
     [SerializeField]
     public bool onTop { get; private set; } = true;
     [SerializeField]
-    private int height = 0;
+    private int height = 1;
     [SerializeField]
     private ElementalType type;
 
@@ -69,7 +69,7 @@ public partial class Totem : MonoBehaviour
         {
             if (!isFalling && !onBottom)
             {
-                transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, transform.position)).First();
+                transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, transform.position)).First() + new Vector3(0, 0, -height);
                 isFalling = true;
                 onTop= false;
             }
@@ -167,7 +167,6 @@ public partial class Totem : MonoBehaviour
             StartCoroutine(WaitForSpiritsSpawn());
             //totemAction();
             height = 1;
-            transform.position += new Vector3(0,0,-height);
         }
         else if (collision.gameObject.tag == "Totem")
         {
