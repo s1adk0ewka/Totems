@@ -101,7 +101,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.02349019}
+  m_Offset: {x: 0, y: -0.09623158}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -112,7 +112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.9530196}
+  m_Size: {x: 1, y: 0.80753684}
   m_EdgeRadius: 0
 --- !u!114 &-877838651835185227
 MonoBehaviour:
@@ -164,6 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballObj: {fileID: 1125600233987013863, guid: 3e9b6cb08d57f2f41a32e6ddb28b1f86, type: 3}
+  snowballObj: {fileID: 0}
+  electroballObj: {fileID: 0}
   ElectroObj: {fileID: 4195699543951145254, guid: 184cb3945db64c249b59ec0d0654054b, type: 3}
   IceObj: {fileID: 8006848252595597467, guid: fbb2f7d6f8ddc5e44a433cfc3a85c019, type: 3}
   EarthObj: {fileID: 6563005620832978703, guid: 39af632f1e429ef40a1108dd38af5e96, type: 3}

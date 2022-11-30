@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public partial class Totem : MonoBehaviour
 {
@@ -166,6 +167,7 @@ public partial class Totem : MonoBehaviour
             StartCoroutine(WaitForSpiritsSpawn());
             //totemAction();
             height = 1;
+            transform.position += new Vector3(0,0,-height);
         }
         else if (collision.gameObject.tag == "Totem")
         {
@@ -178,6 +180,7 @@ public partial class Totem : MonoBehaviour
                 isFalling = false;
                 onBottom = true;
                 height = totem.height + 1;
+                transform.position += new Vector3(0, 0, -height);
                 if (type == ElementalType.Air)
                 {
                     type = totem.type;
