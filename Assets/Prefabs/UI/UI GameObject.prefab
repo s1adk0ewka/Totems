@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameWonCanvas: {fileID: 396890114764118308}
-  GameLostCanvas: {fileID: 219932265577733311, guid: 66183790180206846b7b89818d5944f3, type: 3}
+  GameLostCanvas: {fileID: 4934261725789043860}
 --- !u!1001 &2809664768188969708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -443,5 +443,10 @@ PrefabInstance:
 --- !u!224 &2470613444406862852 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7295336655252259887, guid: 66183790180206846b7b89818d5944f3, type: 3}
+  m_PrefabInstance: {fileID: 5149690112017063979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4934261725789043860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 219932265577733311, guid: 66183790180206846b7b89818d5944f3, type: 3}
   m_PrefabInstance: {fileID: 5149690112017063979}
   m_PrefabAsset: {fileID: 0}

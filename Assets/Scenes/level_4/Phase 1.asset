@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SpiritsInPhase>k__BackingField: 0100000002000000
   <Routes>k__BackingField:
-  - {fileID: 404479392021181040, guid: f988ed2d5cc30ff4c8235d16dd209bcc, type: 3}
+  - {fileID: 7224314150940965697, guid: af05042790f999b49a8075c17e901073, type: 3}
   - {fileID: 4934403904298476770, guid: 70347a6ee2b52594a8cecd5b7768a78f, type: 3}
