@@ -14,8 +14,8 @@ public class TotemActions : MonoBehaviour
     private GameObject snowballObj;
     [SerializeField]
     private GameObject electroballObj;
-    [SerializeField]
-    private GameObject ElectroObj;
+    //[SerializeField]
+    //private GameObject ElectroObj;
     //[SerializeField]
     //private GameObject IceObj;
     [SerializeField]
@@ -56,7 +56,7 @@ public class TotemActions : MonoBehaviour
     {
         //var spirit = Spawner.Instanse.GetCurrentSpirits().FirstOrDefault(spirit => spirit.GetComponent<Spirit>().type != ElementalType.Electro);
         //spirit.GetComponent<Spirit>().Stun(ElectroTotemStunTimeSeconds, new Color(175f / 255f, 0, 1, 1));
-        Instantiate(ElectroObj, new Vector3(0, 0, 1), Quaternion.identity);
+        Instantiate(electroballObj, transform.position + new Vector3(0, 0, -1), Quaternion.identity);
     }
 
     private void IceAction()

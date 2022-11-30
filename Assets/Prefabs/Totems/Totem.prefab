@@ -165,6 +165,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballObj: {fileID: 1125600233987013863, guid: 3e9b6cb08d57f2f41a32e6ddb28b1f86, type: 3}
   snowballObj: {fileID: 1125600233987013863, guid: bb236cc85f6c11b46a5f2de68d169d51, type: 3}
-  electroballObj: {fileID: 0}
-  ElectroObj: {fileID: 4195699543951145254, guid: 184cb3945db64c249b59ec0d0654054b, type: 3}
+  electroballObj: {fileID: 1125600233987013863, guid: af261d4f8145069449402a9097d51625, type: 3}
   EarthObj: {fileID: 6563005620832978703, guid: 39af632f1e429ef40a1108dd38af5e96, type: 3}

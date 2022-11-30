@@ -8,30 +8,30 @@ using UnityEngine;
 public class Electro : MonoBehaviour
 {
     //[SerializeField]
-    private GameObject target;
+    public GameObject target;
     [SerializeField]
     [Range(0f, 10f)]
     private float ElectroTotemStunTimeSeconds = 5f;
 
     public bool isActionAllowed = true;
 
-    private Dictionary<ElementalType, int> priorityDict = new Dictionary<ElementalType, int>()
-    {
-        { ElementalType.Fire, 1 },
-        { ElementalType.Ice, 2 },
-        { ElementalType.Earth, 3 },
-        { ElementalType.Air, 4 },
-        { ElementalType.Electro, 5 },
-    };
+    //private Dictionary<ElementalType, int> priorityDict = new Dictionary<ElementalType, int>()
+    //{
+    //    { ElementalType.Fire, 1 },
+    //    { ElementalType.Ice, 2 },
+    //    { ElementalType.Earth, 3 },
+    //    { ElementalType.Air, 4 },
+    //    { ElementalType.Electro, 5 },
+    //};
     void Start()
     {
-        var spirits = Spawner.Instanse
-            .GetCurrentSpirits()
-            .Where(spirit => spirit.GetComponent<Spirit>().GetElementalType() != ElementalType.Electro)
-            .OrderBy(spirit=> priorityDict[spirit.GetComponent<Spirit>().GetElementalType()])
-            .ToList();
+        //var spirits = Spawner.Instanse
+        //    .GetCurrentSpirits()
+        //    .Where(spirit => spirit.GetComponent<Spirit>().GetElementalType() != ElementalType.Electro)
+        //    .OrderBy(spirit => priorityDict[spirit.GetComponent<Spirit>().GetElementalType()])
+        //    .ToList();
 
-        target=spirits.FirstOrDefault();
+        //target=spirits.FirstOrDefault();
         if (!isActionAllowed) return;
         if (target != null)
         {
