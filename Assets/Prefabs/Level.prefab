@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4141241ea7e6a7740ade93b897dde966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totemsStand: {fileID: 3318843502509385739, guid: 3ef20238e432f9f47a4ed728db2fb987, type: 3}
 --- !u!114 &9122139061180704134
 MonoBehaviour:
   m_ObjectHideFlags: 0

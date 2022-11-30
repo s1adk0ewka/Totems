@@ -7,9 +7,13 @@ public class Lanes : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private static List<Vector3> topPoints;
+    [SerializeField]
+    private GameObject totemsStand;
     private static List<Vector3> bottomPoints;
     public static List<Vector3> TopPoints { get => topPoints;}
     public static List<Vector3> BottomPoints { get => bottomPoints;}
+
+
 
     void Awake()
     {
@@ -17,7 +21,7 @@ public class Lanes : MonoBehaviour
         var height = Camera.main.pixelHeight;
         var firstLaneCenter= getVector3(width/6,0);
         var topY = getVector3(0, height).y - 3*Constants.totemSize.y / 2;
-        var botY = getVector3(0, 0).y + Constants.totemSize.y / 2;
+        var botY = getVector3(0, 0).y + Constants.totemSize.y / 5;
         var secondLaneCenter = getVector3(width/2, 0);
         var third = getVector3(width*5/ 6, 0);
         topPoints = new List<Vector3>(new[] {
@@ -30,6 +34,10 @@ public class Lanes : MonoBehaviour
             new Vector3(secondLaneCenter.x,botY,0),
             new Vector3(third.x,botY,0) 
         });
+        foreach(var point in bottomPoints)
+        {
+            Instantiate(totemsStand, point, Quaternion.identity);
+        }
         //foreach(var p in topPoints)
         //{
         //    Debug.Log(p);
