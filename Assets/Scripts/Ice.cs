@@ -13,17 +13,17 @@ public class Ice : MonoBehaviour
     [SerializeField]
     [Range(0f, 1f)]
     private float IceTotemSlowCoefficient = 0.5f;
-    private GameObject target;
+    public GameObject target;
 
     private bool isActionAllowed = true;
-    private Dictionary<ElementalType, int> priorityDict = new Dictionary<ElementalType, int>()
-    {
-        { ElementalType.Electro, 2 },
-        { ElementalType.Fire, 1 },
-        { ElementalType.Earth, 3},
-        { ElementalType.Air, 4 },
-        { ElementalType.Ice, 5 },
-    };
+    //private Dictionary<ElementalType, int> priorityDict = new Dictionary<ElementalType, int>()
+    //{
+    //    { ElementalType.Electro, 2 },
+    //    { ElementalType.Fire, 1 },
+    //    { ElementalType.Earth, 3},
+    //    { ElementalType.Air, 4 },
+    //    { ElementalType.Ice, 5 },
+    //};
 
     //public void SetTarget(GameObject target)
     //{
@@ -32,12 +32,12 @@ public class Ice : MonoBehaviour
     void Start()
     {
         //target = Spawner.Instanse.GetCurrentSpirits().FirstOrDefault(spirit => spirit.GetComponent<Spirit>().GetElementalType() != ElementalType.Ice);
-        var spirits = Spawner.Instanse
-            .GetCurrentSpirits()
-            .Where(spirit => spirit.GetComponent<Spirit>().GetElementalType() != ElementalType.Ice)
-            .OrderBy(spirit => priorityDict[spirit.GetComponent<Spirit>().GetElementalType()])
-            .ToList();
-        target = spirits.FirstOrDefault();
+        //var spirits = Spawner.Instanse
+        //    .GetCurrentSpirits()
+        //    .Where(spirit => spirit.GetComponent<Spirit>().GetElementalType() != ElementalType.Ice)
+        //    .OrderBy(spirit => priorityDict[spirit.GetComponent<Spirit>().GetElementalType()])
+        //    .ToList();
+        //target = spirits.FirstOrDefault();
         if (!isActionAllowed) return;
         if (target!=null)
         {

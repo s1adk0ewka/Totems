@@ -16,8 +16,8 @@ public class TotemActions : MonoBehaviour
     private GameObject electroballObj;
     [SerializeField]
     private GameObject ElectroObj;
-    [SerializeField]
-    private GameObject IceObj;
+    //[SerializeField]
+    //private GameObject IceObj;
     [SerializeField]
     private GameObject EarthObj;
 
@@ -65,6 +65,6 @@ public class TotemActions : MonoBehaviour
         //var spirit = Spawner.Instanse.GetCurrentSpirits().FirstOrDefault(spirit=>spirit.GetComponent<Spirit>().type!=ElementalType.Ice);
         ////might be desync with effect, chek it later
         //spirit.GetComponent<Spirit>().Slow(IceTotemSlowTimeSeconds, IceTotemSlowCoefficient);
-        Instantiate(IceObj, new Vector3(0, 0, 1), Quaternion.identity);
+        Instantiate(snowballObj, transform.position+new Vector3(0, 0, -1), Quaternion.identity);
     }
 }
