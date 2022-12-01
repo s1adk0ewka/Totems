@@ -25,8 +25,11 @@ public class GameInfo : MonoBehaviour
 
     public void ShowGameLost()
     {
-        isGameOver = true;
-        GameLostCanvas.SetActive(true);
+        if (!isGameOver)
+        {
+            isGameOver = true;
+            GameLostCanvas.SetActive(true);
+        }
     }
 
     public void ShowGameWon()
