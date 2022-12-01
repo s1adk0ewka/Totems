@@ -31,17 +31,32 @@ public class Spawner : MonoBehaviour
 
     [Header("Spirits objects")]
     [SerializeField]
+    private GameObject DefaultSpirit;
+    [SerializeField]
+    private Color DefaultColor;
+    [SerializeField]
     private GameObject FireSpirit;
+    [SerializeField]
+    private Color FireColor;
     [SerializeField]
     private GameObject IceSpirit;
     [SerializeField]
+    private Color IceColor;
+    [SerializeField]
     private GameObject ElectroSpirit;
+    [SerializeField]
+    private Color ElectroColor;
     [SerializeField]
     private GameObject EarthSpirit;
     [SerializeField]
+    private Color EarthColor;
+    [SerializeField]
     private GameObject AirSpirit;
+    [SerializeField]
+    private Color AirColor;
 
     private Dictionary<ElementalType, GameObject> spiritTypeDict;
+    public Dictionary<ElementalType, Color> typeColorsDict { get; private set; }
 
 
 
@@ -51,13 +66,23 @@ public class Spawner : MonoBehaviour
             Instanse = this;
         else if (Instanse == this)
             Destroy(gameObject);
-        spiritTypeDict= new Dictionary<ElementalType, GameObject>() 
+        spiritTypeDict = new Dictionary<ElementalType, GameObject>()
         {
+            {ElementalType.None,DefaultSpirit },
             {ElementalType.Fire, FireSpirit },
             {ElementalType.Ice, IceSpirit },
             {ElementalType.Electro, ElectroSpirit },
             {ElementalType.Earth, EarthSpirit },
             {ElementalType.Air, AirSpirit },
+        };
+        typeColorsDict = new Dictionary<ElementalType, Color>()
+        {
+            {ElementalType.None,DefaultColor },
+            {ElementalType.Fire, FireColor },
+            {ElementalType.Ice, IceColor },
+            {ElementalType.Electro, ElectroColor },
+            {ElementalType.Earth, EarthColor },
+            {ElementalType.Air, AirColor },
         };
         totemSpawnLimit =Totems.Count;
         

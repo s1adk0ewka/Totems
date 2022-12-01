@@ -5,7 +5,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6409216918616264256, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}
@@ -61,6 +60,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409216918616264259, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}
+      propertyPath: type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409216918616264259, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}
       propertyPath: defaultColor.a
       value: 1
       objectReference: {fileID: 0}
@@ -73,5 +76,4 @@ PrefabInstance:
       value: FireSpirit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}

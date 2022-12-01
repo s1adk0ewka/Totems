@@ -26,8 +26,6 @@ public class Spirit : MonoBehaviour
     private Vector2 objectPosition { get; set; }
     [SerializeField]
     private float speedModifier { get; set; } = 0.5f;
-    [SerializeField]
-    private Color defaultColor; 
     private bool ActionCoroutineAllowed { get; set; } = true;
 
     public bool CanHurt { get; private set; } = true;
@@ -53,6 +51,12 @@ public class Spirit : MonoBehaviour
         {
             this.type = type;
         }
+    }
+
+    public void ChangeType(ElementalType type)
+    {
+        this.type= type;
+        GetComponent<SpriteRenderer>().color = Spawner.Instanse.typeColorsDict[type];
     }
 
     public ElementalType GetElementalType()
@@ -95,7 +99,7 @@ public class Spirit : MonoBehaviour
         currentStatus = Status.OK;
         SetSpeed(Constants.DefaultSpiritSpeedModifier);
         CanHurt= true;
-        spriteRenderer.color = defaultColor;
+        spriteRenderer.color = Spawner.Instanse.typeColorsDict[type];
     }
 
     public IEnumerator SlowCoroutine(float time,float slowCoef, Color slowColor = default(Color))
@@ -115,7 +119,7 @@ public class Spirit : MonoBehaviour
         yield return new WaitForSeconds(time);
         currentStatus = Status.OK;
         SetSpeed(Constants.DefaultSpiritSpeedModifier);
-        spriteRenderer.color = defaultColor;
+        spriteRenderer.color = Spawner.Instanse.typeColorsDict[type];
     }
 
 

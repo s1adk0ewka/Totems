@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Route: {fileID: 2734994528588659375, guid: 345057400a282904fb65fc63522ed4ad, type: 3}
-  type: 0
+  type: 5
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &7878454687569093499
 BoxCollider2D:
@@ -119,7 +119,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.5, y: 7.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

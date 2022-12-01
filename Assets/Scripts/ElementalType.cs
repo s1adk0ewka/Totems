@@ -4,5 +4,6 @@
     Earth,
     Electro,
     Ice,
-    Air
+    Air,
+    None
 }

@@ -94,8 +94,7 @@ public partial class Totem : MonoBehaviour
                 return;
             }
             else
-            {
-                
+            { 
                 Destroy(gameObject);
             }
         }
