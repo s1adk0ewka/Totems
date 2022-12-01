@@ -243,6 +243,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Phases.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: cf020c4322ec9374b97f661aa639d10f, type: 2}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Phases.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 80e5fcf52bf972048b52429913e6caf7, type: 2}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Phases.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6eb233c7f23c98f42a42d5edbf41e2a1, type: 2}
     - target: {fileID: 9122139061180704135, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
       propertyPath: m_Name
       value: Level
