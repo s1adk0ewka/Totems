@@ -24,9 +24,6 @@ public partial class Totem : MonoBehaviour
 
     public bool isLast=false;
 
-    [SerializeField]
-    //public TotemType? neighborType { get; private set; } = null;
-
     private Action totemAction;
 
 
@@ -48,21 +45,24 @@ public partial class Totem : MonoBehaviour
         //If make this in FixedUpdate, there will be some strange bugs.
         //TODO
         //Refactor this later
-        //Debug.Log(AnyActionAllowed);
         if (!AnyActionAllowed)
             return;
         if (Input.GetMouseButton(0))
         {
-            //Debug.Log("Pressed left click.");
             if (!isFalling && !onBottom)
             {
                 var mousePos = Camera.main.ScreenToWorldPoint(new Vector3(
                 Input.mousePosition.x,
                 Input.mousePosition.y,
                 10));
+                var closestToMousePoint= Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, mousePos)).First();
+                if (closestToMousePoint != transform.position)
+                {
+                    transform.position = Vector3.Lerp(transform.position, closestToMousePoint, fallSpeed * Time.deltaTime);
+                }
                 //transform.position = Vector3.Lerp(transform.position, new Vector3(mousePos.x, transform.position.y, 0), fallSpeed * Time.deltaTime);
                 //transform.position = Vector3.MoveTowards(transform.position, new Vector3(mousePos.x, transform.position.y, 0), fallSpeed * Time.deltaTime);
-                transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, mousePos)).First();
+                //transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, mousePos)).First();
             }
         }
         if (Input.GetMouseButtonUp(0))
@@ -80,50 +80,18 @@ public partial class Totem : MonoBehaviour
         AnyActionAllowed= true;
     }
 
-
-    //private void OnMouseDrag()
-    //{
-    //    //if (isFalling)
-    //    //{
-    //    //    isDragging = true;
-    //    //    var mousePos = Camera.main.ScreenToWorldPoint(new Vector3(
-    //    //    Input.mousePosition.x,
-    //    //    Input.mousePosition.y,
-    //    //    10));
-    //    //    //transform.Translate(Camera.main.ScreenToWorldPoint(new Vector3(
-    //    //    //Input.mousePosition.x,
-    //    //    //Input.mousePosition.y,
-    //    //    //10)) * Time.deltaTime);
-    //    //    transform.position = Vector3.Lerp(transform.position, mousePos, fallSpeed * Time.deltaTime);
-    //    //}
-    //    if (!isFalling&&!onBottom)
-    //    {
-    //        var mousePos = Camera.main.ScreenToWorldPoint(new Vector3(
-    //        Input.mousePosition.x,
-    //        Input.mousePosition.y,
-    //        10));
-    //        transform.position = Vector3.Lerp(transform.position, new Vector3(mousePos.x, transform.position.y, 0), fallSpeed * Time.deltaTime);
-    //    }
-    //}
-
-    //private void OnMouseUp()
-    //{
-    //    if (!isFalling&&!onBottom)
-    //    {
-    //        transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, transform.position)).First();
-    //        isFalling = true;
-    //    }
-    //}
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Spirit")
         {
-            if (!collision.gameObject.GetComponent<Spirit>().CanHurt) return;
             if (ProtectedByEarthTotem)
             {
                 Destroy(collision.gameObject);
                 ProtectedByEarthTotem = false;
+            }
+            else if (!collision.gameObject.GetComponent<Spirit>().CanHurt)
+            {
+                return;
             }
             else
             {
@@ -135,11 +103,9 @@ public partial class Totem : MonoBehaviour
 
     public IEnumerator WaitForSpiritsSpawn()
     {
-        //yield return new WaitForSeconds(seconds);
+
         yield return new WaitUntil(() =>
         {
-            //var spirit = Spawner.Instanse.GetCurrentSpirits();
-            //return spirit != null || !spirit.IsUnityNull() || !spirit.IsDestroyed();
             return Spawner.Instanse.GetCurrentSpirits().Count>0;
         });
 
@@ -165,7 +131,6 @@ public partial class Totem : MonoBehaviour
             Spawner.Instanse.SpawnTotem();
             GetComponent<Rigidbody2D>().gravityScale = 1;
             StartCoroutine(WaitForSpiritsSpawn());
-            //totemAction();
             height = 1;
         }
         else if (collision.gameObject.tag == "Totem")
@@ -185,13 +150,10 @@ public partial class Totem : MonoBehaviour
                     type = totem.type;
                     totemAction = GetComponent<TotemActions>().dict[type];
                 }
-                //neighborType= totem.type;
                 Spawner.Instanse.SpawnTotem();
                 GetComponent<Rigidbody2D>().gravityScale = 1;
                 StartCoroutine(WaitForSpiritsSpawn());
-                //totemAction();
             }
-
         }
     }
 
