@@ -7,6 +7,8 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     [SerializeField]
+    private GameObject Explosion;
+    [SerializeField]
     private static float speed = 20f;
     private GameObject target;
     void Start()
@@ -25,6 +27,7 @@ public class Fireball : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
             if (transform.position == target.transform.position)
             {
+                Instantiate(Explosion, target.transform.position + new Vector3(0, 0, 1), Quaternion.identity);
                 Destroy(target);
                 Destroy(gameObject);
             }

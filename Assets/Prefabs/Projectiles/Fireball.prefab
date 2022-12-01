@@ -98,9 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822eb8ddc911e9e4c87e780df5fad427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Explosion: {fileID: 4007241109634474728, guid: 18b1a66e6335b8a419b3170fdc0a06bb, type: 3}
 --- !u!96 &-2819917222724427107
 TrailRenderer:
-  serializedVersion: 3
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -192,11 +193,8 @@ TrailRenderer:
     numCapVertices: 3
     alignment: 0
     textureMode: 0
-    textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 1
-  m_ApplyActiveColorSpace: 1
