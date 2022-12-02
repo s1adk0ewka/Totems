@@ -32,8 +32,8 @@ public class Spawner : MonoBehaviour
     [Header("Spirits objects")]
     [SerializeField]
     private GameObject DefaultSpirit;
-    [SerializeField]
-    private Color DefaultColor;
+    //[SerializeField]
+    private Color DefaultColor = Color.white;
     [SerializeField]
     private GameObject FireSpirit;
     [SerializeField]
@@ -95,15 +95,13 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        var totemsWithoutAir = Totems.Where(x => x.GetComponent<Totem>().GetTotemType() != ElementalType.Air).ToList();
-        var index = rnd.Next(0, totemsWithoutAir.Count);
-        totemSpawnPoint = Lanes.TopPoints[1];
-        currentTotem = Instantiate(totemsWithoutAir[index], totemSpawnPoint, Quaternion.identity);
-        //Totems.RemoveAt(index);
-        Totems.Remove(totemsWithoutAir[index]);
-        totemSpawnLimit--;
-        //SpawnPhase();
-        var defTotemLimit= Totems.Count+1;
+        //var totemsWithoutAir = Totems.Where(x => x.GetComponent<Totem>().GetTotemType() != ElementalType.Air).ToList();
+        //var index = rnd.Next(0, totemsWithoutAir.Count);
+        //totemSpawnPoint = Lanes.TopPoints[1];
+        //currentTotem = Instantiate(totemsWithoutAir[index], totemSpawnPoint, Quaternion.identity);
+        //Totems.Remove(totemsWithoutAir[index]);
+        //totemSpawnLimit--;
+        var defTotemLimit = Totems.Count;// +1;
         var NumberOFPhases = Phases.Count();
         //À ÍÀÕÓß ß ÄÅËÀË ÈÂÅÍÒÛ ÅÑËÈ ÌÎÆÍÎ ÏÐÎÑÒÎ ÌÅÒÎÄÛ Ó ÍÅÃÎ ÂÛÇÂÀÒÜ xxDDDDDDDDDDDDDDDDDDDDDDDDD ÁÎÆÅ ÇÀÏÐÅÒÈÒÅ ÌÍÅ ÏÐÎÃÐÀÌÌÈÐÎÂÀÒü
         DisplayText.Instanse.OnSpiritsCountChanged.AddListener(amount =>
@@ -119,6 +117,7 @@ public class Spawner : MonoBehaviour
         DisplayText.Instanse.ChangeTotemsCount(totemSpawnLimit);
         DisplayText.Instanse.ChangePhaseCount(currentPhaseNumber-1);
         SpawnPhase();
+        SpawnFirstTotem();
     }
 
     // Update is called once per frame
@@ -168,21 +167,35 @@ public class Spawner : MonoBehaviour
             currentTotem = Instantiate(Totems[index], totemSpawnPoint, Quaternion.identity);
             Totems.RemoveAt(index);
             totemSpawnLimit--;
-            if (totemSpawnLimit == 0) currentTotem.GetComponent<Totem>().isLast = true;
+            if (totemSpawnLimit == 0)
+                currentTotem.GetComponent<Totem>().isLast = true;
             DisplayText.Instanse.ChangeTotemsCount(totemSpawnLimit);
         }
     }
 
-    //public void SpawnSpirit()
-    //{
-    //    if (spiritSpawnLimit > 0
-    //        && (currentSpirit == null || currentSpirit.IsUnityNull() || currentSpirit.IsDestroyed()))
-    //    {
-    //        //currentSpirit = Instantiate(Spirits[rnd.Next(0, Spirits.Count)], spiritSpawnPoint, Quaternion.identity);
-    //        spiritSpawnLimit--;
-    //        DisplayText.Instanse.ChangeSpiritsCount(spiritSpawnLimit);
-    //    }
-    //}
+    private void SpawnFirstTotem()
+    {
+        if (totemSpawnLimit > 0 && Totems.Count > 0)
+        {
+            var spiritsType = GetCurrentSpirits()
+                .Select(spirit => spirit.GetComponent<Spirit>().GetElementalType())
+                .ToList();
+            var totemsWithoutAir = Totems
+                .Where(x =>
+                x.GetComponent<Totem>().GetTotemType() != ElementalType.Air &&
+                !spiritsType.Contains(x.GetComponent<Totem>().GetTotemType()))
+                .ToList();
+            var index = rnd.Next(0, totemsWithoutAir.Count);
+            totemSpawnPoint = Lanes.TopPoints[1];
+            currentTotem = Instantiate(totemsWithoutAir[index], totemSpawnPoint, Quaternion.identity);
+            Totems.Remove(totemsWithoutAir[index]);
+            totemSpawnLimit--;
+            if (totemSpawnLimit == 0)
+                currentTotem.GetComponent<Totem>().isLast = true;
+            DisplayText.Instanse.ChangeTotemsCount(totemSpawnLimit);
+        }
+    }
+
 
     public GameObject GetCurrentTotem()
     {

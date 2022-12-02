@@ -47,7 +47,6 @@ public class TotemActions : MonoBehaviour
     private void EarthAction()
     {
         var totem = Spawner.Instanse.GetCurrentTotem();
-        totem.GetComponent<Totem>().ProtectedByEarthTotem = true;
         var shield = Instantiate(EarthObj, totem.transform.position + new Vector3(0, 0, -1), Quaternion.identity);
         shield.transform.parent = totem.transform;
     }

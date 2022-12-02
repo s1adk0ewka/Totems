@@ -27,8 +27,8 @@ public class Spirit : MonoBehaviour
     [SerializeField]
     private float speedModifier { get; set; } = 0.5f;
     private bool ActionCoroutineAllowed { get; set; } = true;
-
-    public bool CanHurt { get; private set; } = true;
+    [field:SerializeField]
+    public bool CanHurt { get; set; } = true;
 
     private IEnumerator currentStatusCoroutine;
 
@@ -122,6 +122,12 @@ public class Spirit : MonoBehaviour
         spriteRenderer.color = Spawner.Instanse.typeColorsDict[type];
     }
 
+    //public IEnumerator SpiritCantHurtForSeconds(float time)
+    //{
+    //    CanHurt = false;
+    //    yield return new WaitForSeconds(time);
+    //    CanHurt = true;
+    //}
 
     private IEnumerator WaitTrail(float time)
     {

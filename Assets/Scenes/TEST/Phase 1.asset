@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac99e9e179d83f479fa144ac91a6b1c, type: 3}
   m_Name: Phase 1
   m_EditorClassIdentifier: 
-  <SpiritsInPhase>k__BackingField: 01000000
+  <SpiritsInPhase>k__BackingField: 00000000
   <Routes>k__BackingField: []

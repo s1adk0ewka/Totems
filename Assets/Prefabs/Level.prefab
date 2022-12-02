@@ -349,7 +349,6 @@ MonoBehaviour:
   SpiritsGameObjects: []
   currentPhaseNumber: 0
   DefaultSpirit: {fileID: 6409216918616264261, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}
-  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
   FireSpirit: {fileID: 349324700807180295, guid: 9707c3d1f21fd0044ada09c011f601dc, type: 3}
   FireColor: {r: 0.9843138, g: 0, b: 0, a: 1}
   IceSpirit: {fileID: 8585887776599518223, guid: bcba01ca01c5b9041b8c64274cd99875, type: 3}
@@ -357,6 +356,6 @@ MonoBehaviour:
   ElectroSpirit: {fileID: 2101075279462316640, guid: 058222accdc94ff47879d18be389e2f4, type: 3}
   ElectroColor: {r: 0.6745098, g: 0, b: 0.9607844, a: 1}
   EarthSpirit: {fileID: 7419225437671739915, guid: b77b9a6020daf9845976c87db04a8a48, type: 3}
-  EatrhColor: {r: 0.9843138, g: 0.6862745, b: 0, a: 1}
+  EarthColor: {r: 0.9843138, g: 0.6862745, b: 0, a: 1}
   AirSpirit: {fileID: 1649558953777087653, guid: 0995e304ab839794891482ff06e503e7, type: 3}
   AirColor: {r: 0.2509804, g: 0.60784316, b: 0.5019608, a: 1}

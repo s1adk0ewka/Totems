@@ -11,17 +11,17 @@ public partial class Totem : MonoBehaviour
     public static bool AnyActionAllowed = true;
     [SerializeField]
     private float fallSpeed = 1f;
-    [SerializeField]
+    [field: SerializeField]
     public bool isFalling { get; private set; } = false;
-    [SerializeField]
+    [field: SerializeField]
     public bool onBottom { get; private set; } = false;
-    [SerializeField]
+    [field: SerializeField]
     public bool onTop { get; private set; } = true;
     [SerializeField]
     private int height = 1;
     [SerializeField]
     private ElementalType type;
-
+    [field:SerializeField]
     public bool isLast=false;
 
     private Action totemAction;
@@ -84,12 +84,12 @@ public partial class Totem : MonoBehaviour
     {
         if (collision.gameObject.tag == "Spirit")
         {
-            if (ProtectedByEarthTotem)
-            {
-                Destroy(collision.gameObject);
-                ProtectedByEarthTotem = false;
-            }
-            else if (!collision.gameObject.GetComponent<Spirit>().CanHurt)
+            //if (ProtectedByEarthTotem)
+            //{
+            //    Destroy(collision.gameObject);
+            //    ProtectedByEarthTotem = false;
+            //}
+            if (ProtectedByEarthTotem || !collision.gameObject.GetComponent<Spirit>().CanHurt)
             {
                 return;
             }
