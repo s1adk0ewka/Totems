@@ -11,6 +11,17 @@ public class Fireball : MonoBehaviour
     [SerializeField]
     private static float speed = 20f;
     private GameObject target;
+
+    private Dictionary<ElementalType, int> priorityDict = new Dictionary<ElementalType, int>()
+    {
+        { ElementalType.Fire, 5 },
+        { ElementalType.Earth, 2 },
+        { ElementalType.Ice, 2 },
+        { ElementalType.None, 1 },
+        { ElementalType.Air, 3 },
+        { ElementalType.Electro, 1 },
+    };
+
     void Start()
     {
         target = Spawner.Instanse.GetCurrentSpirits()
@@ -27,8 +38,9 @@ public class Fireball : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
             if (transform.position == target.transform.position)
             {
-                Instantiate(Explosion, target.transform.position + new Vector3(0, 0, 1), Quaternion.identity);
-                Destroy(target);
+                var explosion=Instantiate(Explosion, target.transform.position + new Vector3(0, 0, 1), Quaternion.identity);
+                //Destroy(target);
+                explosion.GetComponent<Explosion>().target = target;
                 Destroy(gameObject);
             }
         }

@@ -64,12 +64,12 @@ public class Spirit : MonoBehaviour
         return type;
     }
 
-    public void Stun(float time,Color color)
+    public void Stun(float time)
     {
         //DRY, refactor later
         if(currentStatusCoroutine!=null)
             StopCoroutine(currentStatusCoroutine);
-        currentStatusCoroutine= StunCoroutine(time,color);
+        currentStatusCoroutine= StunCoroutine(time);
         StartCoroutine(currentStatusCoroutine);
     }
 
@@ -81,20 +81,15 @@ public class Spirit : MonoBehaviour
         currentStatusCoroutine = SlowCoroutine(time,slowCoefficient);
         StartCoroutine(currentStatusCoroutine);
     }
-    public IEnumerator StunCoroutine(float time,Color stunColor = default(Color))
+    public IEnumerator StunCoroutine(float time)
     {
         //to prevent CS1736
         var spriteRenderer = GetComponent<SpriteRenderer>();
-        //var defaultColor = spriteRenderer.color;
         currentStatus = Status.Stuned;
-        if (stunColor == default(Color))
-        {
-            stunColor = Color.gray;
-        }
         SetSpeed(0);
         CanHurt= false;
         //var spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = stunColor;
+        spriteRenderer.color = Spawner.Instanse.typeColorsDict[ElementalType.Electro];
         yield return new WaitForSeconds(time);
         currentStatus = Status.OK;
         SetSpeed(Constants.DefaultSpiritSpeedModifier);

@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class Electro : MonoBehaviour
 {
-    //[SerializeField]
     public GameObject target;
     [SerializeField]
     [Range(0f, 10f)]
@@ -15,41 +14,25 @@ public class Electro : MonoBehaviour
 
     public bool isActionAllowed = true;
 
-    //private Dictionary<ElementalType, int> priorityDict = new Dictionary<ElementalType, int>()
-    //{
-    //    { ElementalType.Fire, 1 },
-    //    { ElementalType.Ice, 2 },
-    //    { ElementalType.Earth, 3 },
-    //    { ElementalType.Air, 4 },
-    //    { ElementalType.Electro, 5 },
-    //};
     void Start()
     {
-        //var spirits = Spawner.Instanse
-        //    .GetCurrentSpirits()
-        //    .Where(spirit => spirit.GetComponent<Spirit>().GetElementalType() != ElementalType.Electro)
-        //    .OrderBy(spirit => priorityDict[spirit.GetComponent<Spirit>().GetElementalType()])
-        //    .ToList();
-
-        //target=spirits.FirstOrDefault();
         if (!isActionAllowed) return;
         if (target != null)
         {
             switch (target.GetComponent<Spirit>().GetElementalType())
             {
-                case ElementalType.Fire:
-                    Explode();
+                case ElementalType.Fire: case ElementalType.Earth:
+                    Destroy(target);
                     break;
                 case ElementalType.Ice:
                     StunAllSpirits();
                     break;
-                case ElementalType.Earth:
-                    target.GetComponent<Spirit>().Stun(ElectroTotemStunTimeSeconds, new Color(175f / 255f, 0, 1, 1));
+                case ElementalType.None:
+                    target.GetComponent<Spirit>().Stun(ElectroTotemStunTimeSeconds);
                     break;
                 case ElementalType.Air:
                     //spirit will not change the color
-                    target.GetComponent<Spirit>().Stun(ElectroTotemStunTimeSeconds, new Color(175f / 255f, 0, 1, 1));
-                    target.GetComponent<Spirit>().ChangeTypeFromAir(ElementalType.Electro);
+                    target.GetComponent<Spirit>().ChangeType(ElementalType.Electro);
                     break;
                 default:
                     Debug.Log($"Unknown target elemental type {target.GetComponent<Spirit>().GetElementalType()}");
@@ -66,17 +49,10 @@ public class Electro : MonoBehaviour
     {
         foreach (var spirit in Spawner.Instanse.GetCurrentSpirits())
         {
-            spirit.GetComponent<Spirit>().Stun(ElectroTotemStunTimeSeconds, new Color(175f / 255f, 0, 1, 1));
+            spirit.GetComponent<Spirit>().Stun(ElectroTotemStunTimeSeconds);
             var electro =  Instantiate(gameObject, spirit.gameObject.transform.position+ new Vector3(0,0,-10),Quaternion.identity);
+            electro.GetComponent<Electro>().target= spirit;
             electro.GetComponent<Electro>().isActionAllowed= false;
-        }
-    }
-
-    private void Explode()
-    {
-        foreach(var spirit in Spawner.Instanse.GetCurrentSpirits())
-        {
-            Destroy(spirit);
         }
     }
 

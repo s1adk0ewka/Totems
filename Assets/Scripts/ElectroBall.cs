@@ -13,8 +13,9 @@ public class ElectroBall : MonoBehaviour
     private Dictionary<ElementalType, int> priorityDict = new Dictionary<ElementalType, int>()
     {
         { ElementalType.Fire, 1 },
+        { ElementalType.Earth, 1 },
         { ElementalType.Ice, 2 },
-        { ElementalType.Earth, 3 },
+        { ElementalType.None, 3 },
         { ElementalType.Air, 4 },
         { ElementalType.Electro, 5 },
     };
