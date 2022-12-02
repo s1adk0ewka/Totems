@@ -12,9 +12,10 @@ public class Snowball : MonoBehaviour
     private float speed = 10f;
     private Dictionary<ElementalType, int> priorityDict = new Dictionary<ElementalType, int>()
     {
-        { ElementalType.Electro, 2 },
+        { ElementalType.Electro, 1 },
         { ElementalType.Fire, 1 },
-        { ElementalType.Earth, 3},
+        { ElementalType.Earth, 2},
+        { ElementalType.None, 3},
         { ElementalType.Air, 4 },
         { ElementalType.Ice, 5 },
     };

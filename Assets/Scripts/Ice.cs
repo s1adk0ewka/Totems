@@ -23,18 +23,18 @@ public class Ice : MonoBehaviour
         {
             switch (target.GetComponent<Spirit>().GetElementalType())
             {
-                case ElementalType.Electro:
-                    Destroy(target);
-                    break;
-                case ElementalType.Fire:
+                case ElementalType.Electro: case ElementalType.Fire:
                     Destroy(target);
                     break;
                 case ElementalType.Earth:
                     SlowAllSpirits();
+                    Destroy(gameObject);
                     break;
                 case ElementalType.Air:
-                    //spirit will not change the color
                     target.GetComponent<Spirit>().ChangeType(ElementalType.Ice);
+                    break;
+                case ElementalType.None:
+                    target.GetComponent<Spirit>().Slow(IceTotemSlowTimeSeconds, IceTotemSlowCoefficient);
                     break;
                 case ElementalType.Ice:
                     Debug.Log("Ice totem shouldn't target ice spirit");
@@ -53,6 +53,7 @@ public class Ice : MonoBehaviour
         {
             spirit.GetComponent<Spirit>().Slow(IceTotemSlowTimeSeconds, IceTotemSlowCoefficient);
             var ice = Instantiate(gameObject, spirit.gameObject.transform.position + new Vector3(0, 0, -10), Quaternion.identity);
+            ice.GetComponent<Ice>().target = spirit;
             ice.GetComponent<Ice>().isActionAllowed = false;
         }
     }
