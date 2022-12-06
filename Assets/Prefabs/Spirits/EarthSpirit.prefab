@@ -5,16 +5,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6409216918616264256, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.1764706
       objectReference: {fileID: 0}
     - target: {fileID: 6409216918616264256, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}
       propertyPath: m_Color.g
-      value: 0.7019608
+      value: 0.7176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409216918616264256, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8862746
       objectReference: {fileID: 0}
     - target: {fileID: 6409216918616264258, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}
       propertyPath: m_RootOrder
@@ -81,5 +84,4 @@ PrefabInstance:
       value: EarthSpirit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}

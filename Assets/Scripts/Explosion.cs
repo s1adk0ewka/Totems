@@ -36,7 +36,7 @@ public class Explosion : MonoBehaviour
                     Debug.Log($"Unknown target elemental type {target.GetComponent<Spirit>().GetElementalType()}");
                     break;
             }
-            transform.position = target.transform.position + new Vector3(0, 0, -10);
+            transform.position = target.transform.position;
         }
     }
 

@@ -28,6 +28,7 @@ public class Ice : MonoBehaviour
                     break;
                 case ElementalType.Earth:
                     SlowAllSpirits();
+                    Destroy(target);
                     Destroy(gameObject);
                     break;
                 case ElementalType.Air:

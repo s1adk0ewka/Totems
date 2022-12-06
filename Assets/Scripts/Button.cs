@@ -13,7 +13,7 @@ public class Button : MonoBehaviour
     public void LoadNextLevel()
     {
         //cycled for prototype, rework later
-        if (SceneManager.GetActiveScene().buildIndex < 5)
+        if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

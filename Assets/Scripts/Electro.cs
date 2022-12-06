@@ -26,6 +26,7 @@ public class Electro : MonoBehaviour
                     break;
                 case ElementalType.Ice:
                     StunAllSpirits();
+                    Destroy(target);
                     break;
                 case ElementalType.None:
                     target.GetComponent<Spirit>().Stun(ElectroTotemStunTimeSeconds);

@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: ef4cbf5cfe54d624f8ebdb70a43e3da4
   - enabled: 1
+    path: Assets/Scenes/Tutorials/1_Fire/FireTutorial.unity
+    guid: 4b0b58e44a5a3544599469e622629529
+  - enabled: 1
     path: Assets/Scenes/level_1/lvl1.unity
     guid: 2d23ceb85cfcb3b48bc71359ef7d0182
   - enabled: 1

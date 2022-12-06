@@ -48,7 +48,9 @@ public class Shield : MonoBehaviour
                     break;
                 case ElementalType.Fire:
                     SetAllSpiritsToDefaultElementalType();
-                    StartCoroutine(DestroyShieldAfterSpiritCantHurtForSeconds(spirit, invulTime));
+                    Destroy(collision.gameObject);
+                    Destroy(gameObject);
+                    //StartCoroutine(DestroyShieldAfterSpiritCantHurtForSeconds(spirit, invulTime));
                     break;
             }
         }

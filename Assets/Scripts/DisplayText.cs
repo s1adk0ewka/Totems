@@ -12,8 +12,8 @@ public class DisplayText : MonoBehaviour
     public TextMeshProUGUI TotemsCount;
     public TextMeshProUGUI SpiritsCount;
     public TextMeshProUGUI LevelId;
-    public UnityEvent<int> OnSpiritsCountChanged= new UnityEvent<int>();
-    public UnityEvent<int> OnTotemsCountChanged = new UnityEvent<int>();
+    //public UnityEvent<int> OnSpiritsCountChanged= new UnityEvent<int>();
+    //public UnityEvent<int> OnTotemsCountChanged = new UnityEvent<int>();
 
     private void Awake()
     {
@@ -21,16 +21,20 @@ public class DisplayText : MonoBehaviour
             Instanse = this;
         else if (Instanse == this)
             Destroy(gameObject);
-        LevelId.text = $"Уровень {SceneManager.GetActiveScene().buildIndex}";
+        if(LevelId!=null)
+            LevelId.text = $"Уровень {SceneManager.GetActiveScene().buildIndex}";
     }
     public void ChangePhaseCount(int amount)
     {
-        OnSpiritsCountChanged.Invoke(amount);
+        if(SpiritsCount!=null)
+            SpiritsCount.text = $"Фаза: {amount}/{Spawner.Instanse.GetPhasesCount()}";
+        //OnSpiritsCountChanged.Invoke(amount);
     }
 
     public void ChangeTotemsCount(int amount)
     {
-        OnTotemsCountChanged.Invoke(amount);
+        if(TotemsCount!=null)
+            TotemsCount.text= $"Тотемы: {amount}/{Spawner.Instanse.GetTotemsLimit()}";
     }
 
 }

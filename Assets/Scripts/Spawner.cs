@@ -5,12 +5,15 @@ using UnityEngine;
 using System.Linq;
 using static UnityEngine.GraphicsBuffer;
 using System;
+using System.Reflection;
 
 public class Spawner : MonoBehaviour
 {
     public static Spawner Instanse { get; private set; } = null;
     [SerializeField]
     private List<GameObject> Totems;
+    [SerializeField]
+    private bool AreTotemsSpawnRandomly = true;
     [SerializeField]
     private Phase[] Phases;
     [SerializeField]
@@ -20,6 +23,9 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private int currentPhaseNumber;
     private int totemSpawnLimit;
+    private int totemSpawnLimitNumber;
+    [SerializeField]
+    private bool isNoTotemSpawnLimit;
     private Vector3 totemSpawnPoint;
     private Vector3 spiritSpawnPoint;
     private System.Random rnd = new ();
@@ -85,6 +91,7 @@ public class Spawner : MonoBehaviour
             {ElementalType.Air, AirColor },
         };
         totemSpawnLimit =Totems.Count;
+        totemSpawnLimitNumber = totemSpawnLimit;
         
         spiritSpawnPoint = Camera.main.transform.position;
         //SpawnTotem();
@@ -104,16 +111,16 @@ public class Spawner : MonoBehaviour
         var defTotemLimit = Totems.Count;// +1;
         var NumberOFPhases = Phases.Count();
         //À ÍÀÕÓß ß ÄÅËÀË ÈÂÅÍÒÛ ÅÑËÈ ÌÎÆÍÎ ÏÐÎÑÒÎ ÌÅÒÎÄÛ Ó ÍÅÃÎ ÂÛÇÂÀÒÜ xxDDDDDDDDDDDDDDDDDDDDDDDDD ÁÎÆÅ ÇÀÏÐÅÒÈÒÅ ÌÍÅ ÏÐÎÃÐÀÌÌÈÐÎÂÀÒü
-        DisplayText.Instanse.OnSpiritsCountChanged.AddListener(amount =>
-        {
-            DisplayText.Instanse.SpiritsCount.text = $"Ôàçà {amount}/{NumberOFPhases}";
-        }
-        );
-        DisplayText.Instanse.OnTotemsCountChanged.AddListener(amount =>
-        {
-            DisplayText.Instanse.TotemsCount.text = $"Òîòåìû: {amount}/{defTotemLimit}";
-        }
-        );
+        //DisplayText.Instanse.OnSpiritsCountChanged.AddListener(amount =>
+        //{
+        //    DisplayText.Instanse.SpiritsCount.text = $"Ôàçà {amount}/{NumberOFPhases}";
+        //}
+        //);
+        //DisplayText.Instanse.OnTotemsCountChanged.AddListener(amount =>
+        //{
+        //    DisplayText.Instanse.TotemsCount.text = $"Òîòåìû: {amount}/{defTotemLimit}";
+        //}
+        //);
         DisplayText.Instanse.ChangeTotemsCount(totemSpawnLimit);
         DisplayText.Instanse.ChangePhaseCount(currentPhaseNumber-1);
         SpawnPhase();
@@ -144,6 +151,16 @@ public class Spawner : MonoBehaviour
         //Debug.Log(currentSpirit);
     }
 
+    public int GetPhasesCount()
+    {
+        return Phases.Count();
+    }
+
+    public int GetTotemsLimit()
+    {
+        return totemSpawnLimitNumber;
+    }
+
     private void SpawnPhase()
     {
         SpiritsGameObjects.Clear();
@@ -161,13 +178,18 @@ public class Spawner : MonoBehaviour
 
     public void SpawnTotem()
     {
-        if (totemSpawnLimit > 0 && Totems.Count>0)
+        //TODO refactor this later
+        if (isNoTotemSpawnLimit)
         {
-            var index = rnd.Next(0, Totems.Count);
+            currentTotem=Instantiate(Totems[rnd.Next(0, Totems.Count)], totemSpawnPoint, Quaternion.identity);
+        }
+        else if (isNoTotemSpawnLimit||(totemSpawnLimit > 0 && Totems.Count>0))//<-- this is bad 
+        {
+            var index = AreTotemsSpawnRandomly? rnd.Next(0, Totems.Count) : Totems.Count-1;
             currentTotem = Instantiate(Totems[index], totemSpawnPoint, Quaternion.identity);
-            Totems.RemoveAt(index);
+            if(!isNoTotemSpawnLimit) Totems.RemoveAt(index);
             totemSpawnLimit--;
-            if (totemSpawnLimit == 0)
+            if (totemSpawnLimit == 0 && !isNoTotemSpawnLimit )
                 currentTotem.GetComponent<Totem>().isLast = true;
             DisplayText.Instanse.ChangeTotemsCount(totemSpawnLimit);
         }
@@ -175,7 +197,11 @@ public class Spawner : MonoBehaviour
 
     private void SpawnFirstTotem()
     {
-        if (totemSpawnLimit > 0 && Totems.Count > 0)
+        //if (isNoTotemSpawnLimit)
+        //{
+        //    Instantiate(Totems[rnd.Next(0, Totems.Count)], totemSpawnPoint, Quaternion.identity);
+        //}
+        if(isNoTotemSpawnLimit||(totemSpawnLimit > 0 && Totems.Count > 0))
         {
             var spiritsType = GetCurrentSpirits()
                 .Select(spirit => spirit.GetComponent<Spirit>().GetElementalType())
@@ -185,12 +211,12 @@ public class Spawner : MonoBehaviour
                 x.GetComponent<Totem>().GetTotemType() != ElementalType.Air &&
                 !spiritsType.Contains(x.GetComponent<Totem>().GetTotemType()))
                 .ToList();
-            var index = rnd.Next(0, totemsWithoutAir.Count);
+            var index = AreTotemsSpawnRandomly ? rnd.Next(0, totemsWithoutAir.Count) : totemsWithoutAir.Count-1;
             totemSpawnPoint = Lanes.TopPoints[1];
             currentTotem = Instantiate(totemsWithoutAir[index], totemSpawnPoint, Quaternion.identity);
-            Totems.Remove(totemsWithoutAir[index]);
+            if (!isNoTotemSpawnLimit) Totems.Remove(totemsWithoutAir[index]);
             totemSpawnLimit--;
-            if (totemSpawnLimit == 0)
+            if (totemSpawnLimit == 0 && !isNoTotemSpawnLimit)
                 currentTotem.GetComponent<Totem>().isLast = true;
             DisplayText.Instanse.ChangeTotemsCount(totemSpawnLimit);
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Phase",menuName = "ScriptableObjects/Waves", order = 1)]
+[CreateAssetMenu(fileName ="Phase 1",menuName = "ScriptableObjects/Waves", order = 1)]
 public class Phase : ScriptableObject
 {
     [field: SerializeField]

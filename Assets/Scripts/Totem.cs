@@ -45,8 +45,12 @@ public partial class Totem : MonoBehaviour
         //If make this in FixedUpdate, there will be some strange bugs.
         //TODO
         //Refactor this later
+        
         if (!AnyActionAllowed)
+        {
             return;
+        }
+            
         if (Input.GetMouseButton(0))
         {
             if (!isFalling && !onBottom)
@@ -67,9 +71,13 @@ public partial class Totem : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            var mousePos = Camera.main.ScreenToWorldPoint(new Vector3(
+                Input.mousePosition.x,
+                0,
+                10));
             if (!isFalling && !onBottom)
             {
-                transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, transform.position)).First() + new Vector3(0, 0, -height);
+                transform.position = Lanes.TopPoints.OrderBy(p => Vector3.Distance(p, mousePos)).First() + new Vector3(0, 0, -height);
                 isFalling = true;
                 onTop= false;
             }
