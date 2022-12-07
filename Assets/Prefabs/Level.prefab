@@ -342,12 +342,14 @@ MonoBehaviour:
   - {fileID: 4231970983551692879, guid: 2894e0636c632cd4f86771b5bb18e83e, type: 3}
   - {fileID: 7596430623487101068, guid: e769f4262e578d7488f90031ec176e6b, type: 3}
   - {fileID: 5294442333973787664, guid: 6e3a37e07b7838041bd6cb273ae99acb, type: 3}
+  AreTotemsSpawnRandomly: 1
   Phases:
   - {fileID: 11400000, guid: c54115b0d2943bf48b2bcfb56f78d33e, type: 2}
   - {fileID: 11400000, guid: db7ea1443c658294cb8b86b2e83df801, type: 2}
   - {fileID: 11400000, guid: b5440d55ff696ed4596b269df3da8f69, type: 2}
   SpiritsGameObjects: []
   currentPhaseNumber: 0
+  isNoTotemSpawnLimit: 0
   DefaultSpirit: {fileID: 6409216918616264261, guid: b0f305ae0b5161c43a6ae3e6c8693371, type: 3}
   FireSpirit: {fileID: 349324700807180295, guid: 9707c3d1f21fd0044ada09c011f601dc, type: 3}
   FireColor: {r: 0.9843138, g: 0, b: 0, a: 1}
