@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac99e9e179d83f479fa144ac91a6b1c, type: 3}
+  m_Name: Phase 3
+  m_EditorClassIdentifier: 
+  <SpiritsInPhase>k__BackingField: 010000000500000002000000
+  <Routes>k__BackingField:
+  - {fileID: 5044102969048723800, guid: a2f5f566827d88c48866ddc181c123d7, type: 3}
+  - {fileID: 5131010809863047655, guid: 7bc8d76b890b914479c234c1e81f0933, type: 3}
+  - {fileID: 6269039726818804000, guid: 019caeb505341644fa77e5b9c26685b1, type: 3}

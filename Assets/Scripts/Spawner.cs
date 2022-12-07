@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private List<GameObject> Totems;
     [SerializeField]
-    private bool AreTotemsSpawnRandomly = true;
+    private bool AreTotemsSpawnRandomly;
     [SerializeField]
     private Phase[] Phases;
     [SerializeField]
@@ -185,7 +185,7 @@ public class Spawner : MonoBehaviour
         }
         else if (isNoTotemSpawnLimit||(totemSpawnLimit > 0 && Totems.Count>0))//<-- this is bad 
         {
-            var index = AreTotemsSpawnRandomly? rnd.Next(0, Totems.Count) : Totems.Count-1;
+            var index = AreTotemsSpawnRandomly ? rnd.Next(0, Totems.Count) : 0;//Totems.Count-1;
             currentTotem = Instantiate(Totems[index], totemSpawnPoint, Quaternion.identity);
             if(!isNoTotemSpawnLimit) Totems.RemoveAt(index);
             totemSpawnLimit--;
@@ -211,7 +211,7 @@ public class Spawner : MonoBehaviour
                 x.GetComponent<Totem>().GetTotemType() != ElementalType.Air &&
                 !spiritsType.Contains(x.GetComponent<Totem>().GetTotemType()))
                 .ToList();
-            var index = AreTotemsSpawnRandomly ? rnd.Next(0, totemsWithoutAir.Count) : totemsWithoutAir.Count-1;
+            var index = AreTotemsSpawnRandomly ? rnd.Next(0, totemsWithoutAir.Count) : 0;//totemsWithoutAir.Count-1;
             totemSpawnPoint = Lanes.TopPoints[1];
             currentTotem = Instantiate(totemsWithoutAir[index], totemSpawnPoint, Quaternion.identity);
             if (!isNoTotemSpawnLimit) Totems.Remove(totemsWithoutAir[index]);

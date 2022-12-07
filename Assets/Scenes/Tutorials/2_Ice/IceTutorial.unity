@@ -143,7 +143,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3848156742312450331, guid: a82b26b632798534095a4a13fa6a9086, type: 3}
       propertyPath: m_text
-      value: "\u0422\u043E\u0442\u0435\u043C\u044B:\u221E"
+      value: "\u0422\u043E\u0442\u0435\u043C\u044B:\n"
       objectReference: {fileID: 0}
     - target: {fileID: 3848156742390174070, guid: a82b26b632798534095a4a13fa6a9086, type: 3}
       propertyPath: LevelId
@@ -156,7 +156,7 @@ PrefabInstance:
     - target: {fileID: 3848156742925537511, guid: a82b26b632798534095a4a13fa6a9086, type: 3}
       propertyPath: m_text
       value: "\u041E\u0431\u0443\u0447\u0430\u044E\u0449\u0438\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C
-        1\n\n\n\n"
+        2\n\n\n\n\n"
       objectReference: {fileID: 0}
     - target: {fileID: 3848156742925537511, guid: a82b26b632798534095a4a13fa6a9086, type: 3}
       propertyPath: m_margin.x
@@ -273,24 +273,76 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
       propertyPath: Totems.Array.size
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
       propertyPath: isNoTotemSpawnLimit
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
       propertyPath: Phases.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: b83ef0fa17e61cc45885139e9f6bdeec, type: 2}
+      objectReference: {fileID: 11400000, guid: f0c4be5ce258e2344827b4b0d3cd1adf, type: 2}
     - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
       propertyPath: Phases.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: b5170b6a986f76948a2d5c6a03aaec44, type: 2}
+      objectReference: {fileID: 11400000, guid: b47bd101d0bc0c2488cd6d77690893e9, type: 2}
     - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
       propertyPath: Phases.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: f4597cb6e8d879e42bca2d43fcfd645e, type: 2}
+      objectReference: {fileID: 11400000, guid: 72a06903cc66acf4b8186ccad0f88c7d, type: 2}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[0]
+      value: 
+      objectReference: {fileID: 5922805149982069376, guid: cded56efc8be2034ca4b3ab39a3cfad7, type: 3}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[1]
+      value: 
+      objectReference: {fileID: 5922805149982069376, guid: cded56efc8be2034ca4b3ab39a3cfad7, type: 3}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[2]
+      value: 
+      objectReference: {fileID: 1086920661385059466, guid: bc5b4cfa0da6f5c429998339d8e870e6, type: 3}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[3]
+      value: 
+      objectReference: {fileID: 1086920661385059466, guid: bc5b4cfa0da6f5c429998339d8e870e6, type: 3}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[4]
+      value: 
+      objectReference: {fileID: 5922805149982069376, guid: cded56efc8be2034ca4b3ab39a3cfad7, type: 3}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[5]
+      value: 
+      objectReference: {fileID: 1086920661385059466, guid: bc5b4cfa0da6f5c429998339d8e870e6, type: 3}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[6]
+      value: 
+      objectReference: {fileID: 5922805149982069376, guid: cded56efc8be2034ca4b3ab39a3cfad7, type: 3}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[7]
+      value: 
+      objectReference: {fileID: 1086920661385059466, guid: bc5b4cfa0da6f5c429998339d8e870e6, type: 3}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[8]
+      value: 
+      objectReference: {fileID: 1086920661385059466, guid: bc5b4cfa0da6f5c429998339d8e870e6, type: 3}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[9]
+      value: 
+      objectReference: {fileID: 5922805149982069376, guid: cded56efc8be2034ca4b3ab39a3cfad7, type: 3}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[10]
+      value: 
+      objectReference: {fileID: 1086920661385059466, guid: bc5b4cfa0da6f5c429998339d8e870e6, type: 3}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[11]
+      value: 
+      objectReference: {fileID: 4231970983551692879, guid: 2894e0636c632cd4f86771b5bb18e83e, type: 3}
+    - target: {fileID: 9122139061180704134, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
+      propertyPath: Totems.Array.data[12]
+      value: 
+      objectReference: {fileID: 4231970983551692879, guid: 2894e0636c632cd4f86771b5bb18e83e, type: 3}
     - target: {fileID: 9122139061180704135, guid: 557c1c9183e86ee40a11479a2aefad14, type: 3}
       propertyPath: m_Name
       value: Level
