@@ -11,6 +11,8 @@ public class GameInfo : MonoBehaviour
     [SerializeField]
     private GameObject GameLostCanvas;
 
+    public bool IsTutorialPopUpActive = false;
+
     public bool isGameOver { get; set; } = false;
 
     private void Awake()

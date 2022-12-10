@@ -85,7 +85,8 @@ public partial class Totem : MonoBehaviour
     }
     private void OnEnable()
     {
-        AnyActionAllowed= true;
+        if(!GameInfo.Instanse.IsTutorialPopUpActive)
+            AnyActionAllowed = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -168,4 +169,5 @@ public partial class Totem : MonoBehaviour
     {
         return type;
     }
+
 }
